@@ -1,3 +1,5 @@
+package pylkor.ee;
+
 public class BSearch {
     public int bSearch(int[] nums, int toFind){
         if(nums == null){
