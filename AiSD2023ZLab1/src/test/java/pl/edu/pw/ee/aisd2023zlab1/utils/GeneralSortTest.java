@@ -1,8 +1,10 @@
 package pl.edu.pw.ee.aisd2023zlab1.utils;
 
 import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+
 import org.junit.Test;
 import pl.edu.pw.ee.aisd2023zlab1.services.Sorting;
 
@@ -55,6 +57,48 @@ public abstract class GeneralSortTest {
         sorter.sort(nums);
 
         // then
+        assertThat(nums)
+                .isSorted()
+                .containsExactlyInAnyOrder(numsCopy);
+    }
+
+    @Test
+    public void should_CorrectlySort_WhenInputIsSorted() {
+        //given
+        int size = 10_000;
+        double[] nums = new double[size];
+
+        for (int i = 0; i < size; i++) {
+            nums[i] = i;
+        }
+
+        double[] numsCopy = nums.clone();
+
+        //when
+        sorter.sort(nums);
+
+        //then
+        assertThat(nums)
+                .isSorted()
+                .containsExactlyInAnyOrder(numsCopy);
+    }
+
+    @Test
+    public void should_CorrectlySort_WhenInputIsReversedSorted() {
+        //given
+        int size = 10_000;
+        double[] nums = new double[size];
+
+        for (int i = 0; i < size; i++) {
+            nums[i] = size - i;
+        }
+
+        double[] numsCopy = nums.clone();
+
+        //when
+        sorter.sort(nums);
+
+        //then
         assertThat(nums)
                 .isSorted()
                 .containsExactlyInAnyOrder(numsCopy);
