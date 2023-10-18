@@ -1,5 +1,7 @@
 package pl.edu.pw.ee.aisd2023zlab1.utils;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -66,13 +68,10 @@ public abstract class GeneralSortTest {
     public void should_CorrectlySort_WhenInputIsSorted() {
         //given
         int size = 10_000;
-        double[] nums = new double[size];
-
-        for (int i = 0; i < size; i++) {
-            nums[i] = i;
-        }
-
+        double[] nums = createRandomData(size);
         double[] numsCopy = nums.clone();
+
+        Arrays.sort(nums);
 
         //when
         sorter.sort(nums);
@@ -84,15 +83,41 @@ public abstract class GeneralSortTest {
     }
 
     @Test
-    public void should_CorrectlySort_WhenInputIsReversedSorted() {
+    public void should_CorrectlySort_WhenInputIsSortedAndReversed() {
+        //given
+        int size = 10_000;
+        double[] nums = createRandomData(size);
+        double[] numsCopy = nums.clone();
+
+        Arrays.sort(nums);
+
+        int p = 0;
+        int k = size - 1;
+        while (p < k) {
+            double tmp = nums[p];
+
+            nums[p] = nums[k];
+            nums[k] = tmp;
+            p++;
+            k--;
+        }
+
+        //when
+        sorter.sort(nums);
+
+        //then
+        assertThat(nums)
+                .isSorted()
+                .containsExactlyInAnyOrder(numsCopy);
+    }
+
+    @Test
+    public void should_CorrectlySort_WhenInputTableContainsOneNumber() {
         //given
         int size = 10_000;
         double[] nums = new double[size];
 
-        for (int i = 0; i < size; i++) {
-            nums[i] = size - i;
-        }
-
+        Arrays.fill(nums, 5);
         double[] numsCopy = nums.clone();
 
         //when
