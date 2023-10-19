@@ -2,6 +2,8 @@ package pl.edu.pw.ee.aisd2023zlab1.qsort.iterative;
 
 import pl.edu.pw.ee.aisd2023zlab1.services.Sorting;
 
+import static pl.edu.pw.ee.aisd2023zlab1.services.SortingUtils.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,9 +12,7 @@ public class QuickSortIterativeRandom implements Sorting {
 
     @Override
     public void sort(double[] nums) {
-        if (nums == null) {
-            throw new IllegalArgumentException("Input args (nums) cannot be null!");
-        }
+        validateParams(nums);
 
         quicksort(nums);
     }
@@ -81,13 +81,4 @@ public class QuickSortIterativeRandom implements Sorting {
 
         return right;
     }
-
-    private void swap(double[] data, int firstId, int secondId) {
-        if (firstId != secondId) {
-            double firstValue = data[firstId];
-            data[firstId] = data[secondId];
-            data[secondId] = firstValue;
-        }
-    }
-
 }

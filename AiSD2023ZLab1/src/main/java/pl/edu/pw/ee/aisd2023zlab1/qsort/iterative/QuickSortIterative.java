@@ -5,13 +5,13 @@ import java.util.List;
 
 import pl.edu.pw.ee.aisd2023zlab1.services.Sorting;
 
+import static pl.edu.pw.ee.aisd2023zlab1.services.SortingUtils.*;
+
 public class QuickSortIterative implements Sorting {
 
     @Override
     public void sort(double[] nums) {
-        if (nums == null) {
-            throw new IllegalArgumentException("Input args (nums) cannot be null!");
-        }
+        validateParams(nums);
 
         quicksort(nums);
     }
@@ -75,13 +75,5 @@ public class QuickSortIterative implements Sorting {
         swap(data, start, left);
 
         return left;
-    }
-
-    private void swap(double[] data, int firstId, int secondId) {
-        if (firstId != secondId) {
-            double firstValue = data[firstId];
-            data[firstId] = data[secondId];
-            data[secondId] = firstValue;
-        }
     }
 }
