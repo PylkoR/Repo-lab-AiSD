@@ -1,7 +1,6 @@
 package pl.edu.pw.ee.aisd2023zlab1.utils;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -129,6 +128,24 @@ public abstract class GeneralSortTest {
                 .containsExactlyInAnyOrder(numsCopy);
     }
 
+    @Test
+    public void should_CorrectlyAscendingSort_WhenInputIsRandomAndSmall() {
+        // given
+        int size = 10;
+        double[] nums = createRandomDataWithoutSeed(size);
+        double[] numsCopy = nums.clone();
+        System.out.println("Przed sortowniem: " + Arrays.toString(nums));
+
+        // when
+        sorter.sort(nums);
+        System.out.println("Po sortowniu: " + Arrays.toString(nums));
+
+        // then
+        assertThat(nums)
+                .isSorted()
+                .containsExactlyInAnyOrder(numsCopy);
+    }
+
     private double[] createRandomData(int size) {
         assert size >= 0;
 
@@ -136,6 +153,20 @@ public abstract class GeneralSortTest {
 
         long eliteSeed = 31337;
         Random rand = new Random(eliteSeed);
+
+        for (int i = 0; i < size; i++) {
+            nums[i] = rand.nextDouble();
+        }
+
+        return nums;
+    }
+
+    private double[] createRandomDataWithoutSeed(int size) {
+        assert size >= 0;
+
+        double[] nums = new double[size];
+
+        Random rand = new Random();
 
         for (int i = 0; i < size; i++) {
             nums[i] = rand.nextDouble();
