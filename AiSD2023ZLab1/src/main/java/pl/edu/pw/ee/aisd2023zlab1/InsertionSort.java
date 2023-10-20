@@ -21,4 +21,19 @@ public class InsertionSort implements Sorting {
             nums[j + 1] = tmp;
         }
     }
+
+    public void sort(double[] nums, int left, int right) {
+        validateParams(nums);
+
+        for (int i = left + 1; i < right + 1; i++) {
+            int j = i - 1;
+            double tmp = nums[i];
+
+            while (j >= 0 && tmp < nums[j]) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            nums[j + 1] = tmp;
+        }
+    }
 }

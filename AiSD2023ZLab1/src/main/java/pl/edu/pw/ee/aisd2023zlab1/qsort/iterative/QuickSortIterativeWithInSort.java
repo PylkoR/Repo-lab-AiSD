@@ -1,5 +1,6 @@
 package pl.edu.pw.ee.aisd2023zlab1.qsort.iterative;
 
+import pl.edu.pw.ee.aisd2023zlab1.InsertionSort;
 import pl.edu.pw.ee.aisd2023zlab1.services.Sorting;
 
 import java.util.ArrayList;
@@ -35,6 +36,12 @@ public class QuickSortIterativeWithInSort implements Sorting {
                 n--;
                 left = starts.remove(n);
                 right = ends.remove(n);
+
+                if (right - left < 36) {
+                    InsertionSort insert = new InsertionSort();
+                    insert.sort(data, left, right);
+                    continue;
+                }
                 pivot = partition(data, left, right);
 
                 if (pivot > left) {
