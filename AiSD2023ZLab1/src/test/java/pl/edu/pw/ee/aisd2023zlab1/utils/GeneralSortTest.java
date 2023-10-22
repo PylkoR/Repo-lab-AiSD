@@ -115,8 +115,9 @@ public abstract class GeneralSortTest {
         //given
         int size = 10_000;
         double[] nums = new double[size];
+        Random rand = new Random();
 
-        Arrays.fill(nums, 5);
+        Arrays.fill(nums, rand.nextDouble());
         double[] numsCopy = nums.clone();
 
         //when
@@ -129,7 +130,7 @@ public abstract class GeneralSortTest {
     }
 
     @Test
-    public void should_CorrectlyAscendingSort_WhenInputIsRandomAndSmall() {
+    public void should_CorrectlyAscendingSortAndPrintResults_WhenInputIsRandomAndSmall() {
         // given
         int size = 10;
         double[] nums = createRandomDataWithoutSeed(size);
@@ -141,6 +142,24 @@ public abstract class GeneralSortTest {
         System.out.println("Po sortowniu: " + Arrays.toString(nums));
 
         // then
+        assertThat(nums)
+                .isSorted()
+                .containsExactlyInAnyOrder(numsCopy);
+    }
+
+    @Test
+    public void should_CorrectlySort_WhenTableHaveOneElement(){
+        //given
+        double[] nums = new double[1];
+        Random rand = new Random();
+        nums[0] = rand.nextDouble();
+
+        double[] numsCopy = nums.clone();
+
+        //when
+        sorter.sort(nums);
+
+        //then
         assertThat(nums)
                 .isSorted()
                 .containsExactlyInAnyOrder(numsCopy);
