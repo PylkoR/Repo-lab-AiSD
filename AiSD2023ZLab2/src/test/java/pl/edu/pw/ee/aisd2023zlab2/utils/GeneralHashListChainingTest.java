@@ -120,27 +120,36 @@ public abstract class GeneralHashListChainingTest {
         // then
         assertThat(returnedName).isEqualTo("Ola");
     }
-
+    
     @Test
-    public void should_CorrectlyAddThreeDifferentElems_WhenHashSizeEqualOne() {
+    public void should_ReturnNull_WhenTryingToGetElementThatIsNotInTheTable() {
         // given
-        int hashSize = 1;
-        HashTable<String> names = new HashListChainingModularHashing<>(hashSize);
-        names.add("Ola");
-        names.add("Ala");
-        names.add("Ula");
+        hashString.add("Ola");
+        hashString.add("Ala");
+        hashString.add("Ula");
 
         // when
-        int nOfElemsInHash = getNumOfElems(names);
-        String firstName = getHashElemById(names, 0);
-        String secondName = getHashElemById(names, 1);
-        String thirdName = getHashElemById(names, 2);
+        String notExist = hashString.get("Ela");
+
+        // then
+        assertThat(notExist).isEqualTo(null);
+    }
+
+    @Test
+    public void shouldNot_RemoveAnything_WhenThereIsNotElemWeWantToDelete() {
+        // given
+        hashString.add("Ola");
+        hashString.add("Ala");
+        hashString.add("Ula");
+
+        // when
+        int nOfElemsInHash = getNumOfElems(hashString);
+        hashString.delete("Ela");
+        int nOfElemsInHashAfterRemoving = getNumOfElems(hashString);
 
         // then
         assertThat(nOfElemsInHash).isEqualTo(3);
-        assertThat(firstName).isEqualTo("Ula");
-        assertThat(secondName).isEqualTo("Ala");
-        assertThat(thirdName).isEqualTo("Ola");
+        assertThat(nOfElemsInHashAfterRemoving).isEqualTo(3);
     }
 
 }
