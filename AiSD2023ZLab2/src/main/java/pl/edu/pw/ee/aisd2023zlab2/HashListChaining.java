@@ -1,6 +1,7 @@
 package pl.edu.pw.ee.aisd2023zlab2;
 
 import static java.util.Objects.isNull;
+
 import pl.edu.pw.ee.aisd2023zlab2.services.HashTable;
 
 public abstract class HashListChaining<T extends Comparable<T>> implements HashTable<T> {

@@ -2,6 +2,7 @@ package pl.edu.pw.ee.aisd2023zlab2.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import pl.edu.pw.ee.aisd2023zlab2.HashListChaining;
 import pl.edu.pw.ee.aisd2023zlab2.HashListChainingModularHashing;
 import pl.edu.pw.ee.aisd2023zlab2.services.HashTable;
+
 import static pl.edu.pw.ee.aisd2023zlab2.utils.AdvancedConstructors.createHashInstance;
 import static pl.edu.pw.ee.aisd2023zlab2.utils.AdvancedGetters.getHashElemById;
 import static pl.edu.pw.ee.aisd2023zlab2.utils.AdvancedGetters.getNumOfElems;
@@ -120,7 +122,7 @@ public abstract class GeneralHashListChainingTest {
         // then
         assertThat(returnedName).isEqualTo("Ola");
     }
-    
+
     @Test
     public void should_ReturnNull_WhenTryingToGetElementThatIsNotInTheTable() {
         // given

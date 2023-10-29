@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static pl.edu.pw.ee.aisd2023zlab2.utils.AdvancedGetters.getHashElemById;
 import static pl.edu.pw.ee.aisd2023zlab2.utils.AdvancedGetters.getNumOfElems;
 
-public class HashListChainingMultiplicativeHashingTest  extends GeneralHashListChainingTest {
-    public HashListChainingMultiplicativeHashingTest(){
+public class HashListChainingMultiplicativeHashingTest extends GeneralHashListChainingTest {
+    public HashListChainingMultiplicativeHashingTest() {
         super(HashListChainingMultiplicativeHashing.class);
     }
 
