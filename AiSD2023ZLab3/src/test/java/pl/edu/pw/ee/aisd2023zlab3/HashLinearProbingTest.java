@@ -42,4 +42,35 @@ public class HashLinearProbingTest {
         assertThat(nOfElemsAfterPut).isEqualTo(1);
     }
 
+    @Test
+    public void should_CorrectlyGetValueOfElemFromHashTable(){
+        //given
+        HashTable<String> valuesToGet = new HashLinearProbing<>();
+        String elem1 = "value1 I want to get";
+        String elem2 = "value2 I want to get";
+
+        //when
+        valuesToGet.put(elem1);
+        valuesToGet.put(elem2);
+
+        String value1 = valuesToGet.get(elem1);
+        String value2 = valuesToGet.get(elem2);
+
+        //then
+        assertThat(value1).isEqualTo(elem1);
+        assertThat(value2).isEqualTo(elem2);
+    }
+
+    @Test
+    public void should_ReturnNull_WhenElemIsNotInTheTable(){
+        //given
+        HashTable<String> valuesToGet = new HashLinearProbing<>();
+        String elemToFind = "Not in the table";
+
+        //when
+        String value1 = valuesToGet.get(elemToFind);
+
+        //then
+        assertThat(value1).isEqualTo(null);
+    }
 }

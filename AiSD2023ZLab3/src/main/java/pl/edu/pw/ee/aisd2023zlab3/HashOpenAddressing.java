@@ -3,7 +3,7 @@ package pl.edu.pw.ee.aisd2023zlab3;
 import pl.edu.pw.ee.aisd2023zlab3.exceptions.NotImplementedException;
 import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 
-public abstract class HashOpenAdressing<T extends Comparable<T>> implements HashTable<T> {
+public abstract class HashOpenAddressing<T extends Comparable<T>> implements HashTable<T> {
 
     private final T nil = null;
     private int size;
@@ -11,11 +11,11 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
     private T[] hashElems;
     private final double correctLoadFactor;
 
-    HashOpenAdressing() {
+    HashOpenAddressing() {
         this(2039); // initial size as random prime number
     }
 
-    HashOpenAdressing(int size) {
+    HashOpenAddressing(int size) {
         validateHashInitSize(size);
 
         this.size = size;
@@ -24,7 +24,7 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
     }
 
     @Override
-    public void put(T newElem) {
+    public String put(T newElem) {
         validateInputElem(newElem);
         resizeIfNeeded();
 
@@ -43,11 +43,16 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
 
         hashElems[hashId] = newElem;
         nElems++;
+        return null;
     }
 
     @Override
     public T get(T elem) {
-        throw new NotImplementedException("TODO: get(...)");
+        validateInputElem(elem);
+
+        int hashId = findElemId(elem);
+
+        return hashElems[hashId] != nil ? hashElems[hashId] : null;
     }
 
     @Override
@@ -105,5 +110,18 @@ public abstract class HashOpenAdressing<T extends Comparable<T>> implements Hash
                 oldElems[i] = nil;
             }
         }
+    }
+
+    private int findElemId(T elem){
+        int key = elem.hashCode();
+        int i = 0;
+        int hashId = hashFunc(key, i);
+
+        while (hashElems[hashId] != elem && hashElems[hashId] != nil) {
+            i = (i + 1) % size;
+            hashId = hashFunc(key, i);
+        }
+
+        return hashId;
     }
 }

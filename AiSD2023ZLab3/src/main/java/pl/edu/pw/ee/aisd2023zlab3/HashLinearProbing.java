@@ -1,6 +1,6 @@
 package pl.edu.pw.ee.aisd2023zlab3;
 
-public class HashLinearProbing<T extends Comparable<T>> extends HashOpenAdressing<T> {
+public class HashLinearProbing<T extends Comparable<T>> extends HashOpenAddressing<T> {
 
     public HashLinearProbing() {
         super();
