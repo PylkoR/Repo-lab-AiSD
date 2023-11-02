@@ -5,7 +5,8 @@ import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 public abstract class HashOpenAddressing<T extends Comparable<T>> implements HashTable<T> {
 
     private final T nil = null;
-    private final T deleted = (T) "deleted";
+    Integer del = 9;
+    private final T deleted = (T) del;
     private int size;
     private int nElems;
     private T[] hashElems;
@@ -124,7 +125,7 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         int i = 0;
         int hashId = hashFunc(key, i);
 
-        while (hashElems[hashId] != nil && hashElems[hashId].compareTo(elem) != 0) {
+        while (hashElems[hashId] != nil && !hashElems[hashId].equals(elem)) {
             i = (i + 1) % size;
             hashId = hashFunc(key, i);
         }
