@@ -66,4 +66,70 @@ public class GeneralHashTableTest {
         //then
         assertThat(value1).isEqualTo(null);
     }
+
+    @Test
+    public void should_deleteElemFromTable() {
+        //given
+        String elem1 = "To delete";
+        String elem2 = "To delete";
+
+        //when
+        hashStringTable.put(elem1);
+        hashStringTable.put(elem2);
+        int nOfElemsAfterPut = getNumOfElems(hashStringTable);
+
+        hashStringTable.delete(elem1);
+        hashStringTable.delete(elem2);
+        int nOfElemsAfterDelete = getNumOfElems(hashStringTable);
+
+        //then
+        assertThat(nOfElemsAfterPut).isEqualTo(2);
+        assertThat(nOfElemsAfterDelete).isEqualTo(0);
+    }
+
+    @Test
+    public void should_deleteElemFromTable_andGetNull() {
+        //given
+        String elem1 = "To delete";
+        String elem2 = "To delete";
+
+        //when
+        hashStringTable.put(elem1);
+        hashStringTable.put(elem2);
+        int nOfElemsAfterPut = getNumOfElems(hashStringTable);
+
+        hashStringTable.delete(elem1);
+        hashStringTable.delete(elem2);
+        int nOfElemsAfterDelete = getNumOfElems(hashStringTable);
+
+        String value1 = hashStringTable.get(elem1);
+        String value2 = hashStringTable.get(elem2);
+
+        //then
+        assertThat(nOfElemsAfterPut).isEqualTo(2);
+        assertThat(nOfElemsAfterDelete).isEqualTo(0);
+        assertThat(value1).isEqualTo(null);
+        assertThat(value2).isEqualTo(null);
+    }
+
+    @Test
+    public void should_deleteElemFromTable_andPutItBackToSameIndex() {
+        //given
+        String elem1 = "To delete";
+
+        //when
+        hashStringTable.put(elem1);
+        int index1 = hashStringTable.findElemId(elem1);
+
+        hashStringTable.delete(elem1);
+
+        hashStringTable.put(elem1);
+
+        int index2 = hashStringTable.findElemId(elem1);
+        String value1 = hashStringTable.get(elem1);
+
+        //then
+        assertThat(elem1).isEqualTo(value1);
+        assertThat(index1).isEqualTo(index2);
+    }
 }

@@ -5,12 +5,13 @@ import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 public abstract class HashOpenAddressing<T extends Comparable<T>> implements HashTable<T> {
 
     private final T nil = null;
-    //private final T deleted = (T) "deleted";
+    private final T deleted = (T) "deleted";
     private int size;
     private int nElems;
     private T[] hashElems;
     private final double correctLoadFactor;
 
+    //private final String deleted = "deleted";
     HashOpenAddressing() {
         this(2039); // initial size as random prime number
     }
@@ -32,7 +33,7 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         int i = 0;
         int hashId = hashFunc(key, i);
 
-        while (hashElems[hashId] != nil) {
+        while (hashElems[hashId] != nil && !hashElems[hashId].equals(deleted)) {
             if (i + 1 == size) {
                 doubleResize();
                 i = -1;
@@ -61,7 +62,8 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
 
         int hashId = findElemId(elem);
 
-        hashElems[hashId] = nil;//deleted; //unikalna wartość tu musi być
+        hashElems[hashId] = deleted;
+        nElems--;
     }
 
     private void validateHashInitSize(int initialSize) {
@@ -116,7 +118,8 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         }
     }
 
-    private int findElemId(T elem){
+    //@Override
+    public int findElemId(T elem) {
         int key = elem.hashCode();
         int i = 0;
         int hashId = hashFunc(key, i);

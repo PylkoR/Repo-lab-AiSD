@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class HashDoubleHashingTest extends GeneralHashTableTest {
-    public HashDoubleHashingTest(){
+    public HashDoubleHashingTest() {
         super(HashDoubleHashing.class);
     }
 
