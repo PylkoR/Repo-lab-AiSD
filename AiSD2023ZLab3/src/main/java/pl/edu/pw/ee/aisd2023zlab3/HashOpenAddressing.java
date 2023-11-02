@@ -1,11 +1,11 @@
 package pl.edu.pw.ee.aisd2023zlab3;
 
-import pl.edu.pw.ee.aisd2023zlab3.exceptions.NotImplementedException;
 import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 
 public abstract class HashOpenAddressing<T extends Comparable<T>> implements HashTable<T> {
 
     private final T nil = null;
+    //private final T deleted = (T) "deleted";
     private int size;
     private int nElems;
     private T[] hashElems;
@@ -57,7 +57,11 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
 
     @Override
     public void delete(T elem) {
-        throw new NotImplementedException("TODO: delete(...)");
+        validateInputElem(elem);
+
+        int hashId = findElemId(elem);
+
+        hashElems[hashId] = nil;//deleted; //unikalna wartość tu musi być
     }
 
     private void validateHashInitSize(int initialSize) {
@@ -117,7 +121,7 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         int i = 0;
         int hashId = hashFunc(key, i);
 
-        while (hashElems[hashId] != elem && hashElems[hashId] != nil) {
+        while (hashElems[hashId] != nil && hashElems[hashId].compareTo(elem) != 0) {
             i = (i + 1) % size;
             hashId = hashFunc(key, i);
         }

@@ -1,15 +1,14 @@
 package pl.edu.pw.ee.aisd2023zlab3;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
-
 import org.junit.Test;
 import pl.edu.pw.ee.aisd2023zlab3.utils.GeneralHashTableTest;
 
-public class HashLinearProbingTest extends GeneralHashTableTest {
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
-    public HashLinearProbingTest() {
-        super(HashLinearProbing.class);
+public class HashDoubleHashingTest extends GeneralHashTableTest {
+    public HashDoubleHashingTest(){
+        super(HashDoubleHashing.class);
     }
 
     @Test
@@ -19,7 +18,7 @@ public class HashLinearProbingTest extends GeneralHashTableTest {
 
         // when
         Throwable exceptionCaught = catchThrowable(() -> {
-            new HashLinearProbing<>(initialSize);
+            new HashDoubleHashing<>(initialSize);
         });
 
         // then
