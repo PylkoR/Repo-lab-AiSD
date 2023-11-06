@@ -126,7 +126,9 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         int key = elem.hashCode();
         int i = 0;
         int hashId = hashFunc(key, i);
-        resizeIfNeeded();
+        double loadFactor = countLoadFactor();
+        if (loadFactor == 1)
+            resizeIfNeeded();
 
         while (hashElems[hashId] != nil && !hashElems[hashId].equals(elem)) {
             i = (i + 1) % size;
