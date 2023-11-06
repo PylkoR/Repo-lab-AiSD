@@ -5,7 +5,7 @@ import pl.edu.pw.ee.aisd2023zlab3.services.HashTable;
 public abstract class HashOpenAddressing<T extends Comparable<T>> implements HashTable<T> {
 
     private final T nil = null;
-    Integer del = 9;
+    private final Integer del = Integer.MIN_VALUE;
     private final T deleted = (T) del;
     private int size;
     private int nElems;
@@ -63,8 +63,10 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
 
         int hashId = findElemId(elem);
 
-        hashElems[hashId] = deleted;
-        nElems--;
+        if (hashElems[hashId] != nil) {
+            hashElems[hashId] = deleted;
+            nElems--;
+        }
     }
 
     private void validateHashInitSize(int initialSize) {
@@ -124,6 +126,7 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         int key = elem.hashCode();
         int i = 0;
         int hashId = hashFunc(key, i);
+        resizeIfNeeded();
 
         while (hashElems[hashId] != nil && !hashElems[hashId].equals(elem)) {
             i = (i + 1) % size;

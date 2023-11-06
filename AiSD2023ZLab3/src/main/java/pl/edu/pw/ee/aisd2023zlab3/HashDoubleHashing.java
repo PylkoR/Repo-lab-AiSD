@@ -13,10 +13,13 @@ public class HashDoubleHashing<T extends Comparable<T>> extends HashOpenAddressi
     @Override
     int hashFunc(int key, int i) {
         int m = getSize();
+        int n = m - 2;
+
+        if (n < 3){n = 1;}
 
         key = key & Integer.MAX_VALUE;
 
-        int hash = (key%m + i * (1 + key%(m-2)))%m;
+        int hash = (key%m + i * (1 + key%n))%m;
 
         return hash;
     }
