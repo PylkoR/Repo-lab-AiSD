@@ -121,7 +121,7 @@ public abstract class HashOpenAddressing<T extends Comparable<T>> implements Has
         }
     }
 
-    //@Override
+    @Override
     public int findElemId(T elem) {
         int key = elem.hashCode();
         int i = 0;
