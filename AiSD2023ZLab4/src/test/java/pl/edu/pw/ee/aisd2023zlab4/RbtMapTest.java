@@ -8,18 +8,20 @@ import org.junit.Test;
 public class RbtMapTest {
 
     private RbtMap<Integer, String> tree;
+    private boolean sameNumberOfBlackNodes;
 
     @Before
     public void setup() {
         tree = new RbtMap<>();
+        sameNumberOfBlackNodes = true;
     }
 
     @Test
     public void should_makeBalancedTreeWithSameNumberOfBlackNodesInEveryPath() {
         //given
-        int size = 126;
+        int size = 173;
         int numberOfBlackNodes = 1;
-        boolean arePathsEqual;
+
         for (int i = 0; i < size; i++) {
             tree.setValue(i, "P. Czarnek " + i);
         }
@@ -34,24 +36,51 @@ public class RbtMapTest {
         }
 
         tmp = tree.getRootNode();
-        arePathsEqual = countPathsLength(tmp, 0, numberOfBlackNodes);
+        countPathsLength(tmp, 0, numberOfBlackNodes);
 
 
         //then
         System.out.println(numberOfBlackNodes);
-        assertThat(arePathsEqual).isEqualTo(true);
+        assertThat(sameNumberOfBlackNodes).isEqualTo(true);
     }
 
-    public boolean countPathsLength(Node<?, ?> root, int currentLength, int compareLength) {
+    @Test
+    public void should_correctlyPutAndGetSomeValues(){
+        //given
+        String value1 = "Ala";
+        String value2 = "Ola";
+        String value3 = "Ela";
+        String value4 = "Bla";
+
+        //when
+        tree.setValue(1, value1);
+        tree.setValue(3, value2);
+        tree.setValue(6, value3);
+        tree.setValue(2, value4);
+
+        String elem1 = tree.getValue(1);
+        String elem2 = tree.getValue(3);
+        String elem3 = tree.getValue(6);
+        String elem4 = tree.getValue(2);
+
+        //then
+        assertThat(elem1).isEqualTo(value1);
+        assertThat(elem2).isEqualTo(value2);
+        assertThat(elem3).isEqualTo(value3);
+        assertThat(elem4).isEqualTo(value4);
+    }
+
+    public void countPathsLength(Node<?, ?> root, int currentLength, int compareLength) {
         if (root == null) {
-            return currentLength == compareLength;
+            if (currentLength != compareLength)
+                sameNumberOfBlackNodes = false;
         }
-        if (root.getColor().equals(Color.BLACK))
+        else if (root.getColor().equals(Color.BLACK))
             currentLength++;
 
-        countPathsLength(root.getLeft(), currentLength, compareLength);
-        countPathsLength(root.getRight(), currentLength, compareLength);
-
-        return true;
+        if (root != null) {
+            countPathsLength(root.getLeft(), currentLength, compareLength);
+            countPathsLength(root.getRight(), currentLength, compareLength);
+        }
     }
 }
