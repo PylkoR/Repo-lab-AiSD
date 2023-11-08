@@ -26,4 +26,7 @@ public class RbtMap<K extends Comparable<K>, V> implements MapInterface<K, V> {
         return tree.get(key);
     }
 
+    public Node<K, V> getRootNode() {
+        return tree.getRoot();
+    }
 }
