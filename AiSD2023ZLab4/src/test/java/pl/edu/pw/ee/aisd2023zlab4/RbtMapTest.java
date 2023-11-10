@@ -141,7 +141,7 @@ public class RbtMapTest {
     }
 
     @Test
-    public void should_correctlyPutBiggerNodesAndMakeLeftRotation(){
+    public void should_correctlyPutBiggerNodesAndMakeLeftRotation() {
         //given
         String root = "root";
         String rightSon = "rightSon";
@@ -164,7 +164,7 @@ public class RbtMapTest {
     }
 
     @Test
-    public void should_correctlyPutSmallerNodesAndMakeRightRotation(){
+    public void should_correctlyPutSmallerNodesAndMakeRightRotation() {
         //given
         String root = "root";
         String leftSon = "leftSon";
@@ -189,10 +189,10 @@ public class RbtMapTest {
         assertThat(tree.getRootNode().getColor()).isEqualTo(Color.BLACK);
     }
 
-    private void checkThatAllNodesDoNotHaveRedRightSon(Node<?, ?> node){
+    private void checkThatAllNodesDoNotHaveRedRightSon(Node<?, ?> node) {
         if (node != null) {
             if (node.getRight() != null && node.getRight().isRed()) {
-                    noRedRightSons = false;
+                noRedRightSons = false;
             }
 
             checkThatAllNodesDoNotHaveTwoRedSons(node.getLeft());
@@ -200,10 +200,10 @@ public class RbtMapTest {
         }
     }
 
-    private void checkThatAllNodesDoNotHaveTwoRedSons(Node<?,?> node){
+    private void checkThatAllNodesDoNotHaveTwoRedSons(Node<?, ?> node) {
         if (node != null) {
             if (node.getLeft() != null && node.getRight() != null) {
-                if (node.getLeft().isRed() && node.getRight().isRed()){
+                if (node.getLeft().isRed() && node.getRight().isRed()) {
                     noTwoRedSons = false;
                 }
             }
