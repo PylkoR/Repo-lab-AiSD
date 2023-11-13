@@ -36,6 +36,7 @@ public class RbtMapPerformanceTest {
 
         while (currentSize < maxSize) {
             putRandomData(map, step);
+            //putAscendingData(map, step);
             currentSize += step;
 
             nOfPuts = getNumOfPuts(map);
@@ -55,6 +56,16 @@ public class RbtMapPerformanceTest {
 
         for (int i = 0; i < nOfData; i++) {
             keyAndValue = UUID.randomUUID().toString();
+            map.setValue(keyAndValue, keyAndValue);
+        }
+    }
+
+    private void putAscendingData(MapInterface<String, String> map, int nOfData){
+        String keyAndValue;
+
+        for (int i = 0; i < nOfData; i++) {
+            Integer key = i;
+            keyAndValue = key.toString();
             map.setValue(keyAndValue, keyAndValue);
         }
     }
