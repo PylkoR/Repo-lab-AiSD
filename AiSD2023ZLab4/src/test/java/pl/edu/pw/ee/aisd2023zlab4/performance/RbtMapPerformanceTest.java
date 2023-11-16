@@ -35,8 +35,9 @@ public class RbtMapPerformanceTest {
         int nOfPuts;
 
         while (currentSize < maxSize) {
-            putRandomData(map, step);
-            //putAscendingData(map, step);
+            //putRandomData(map, step);
+            //putAscendingData(map, step, currentSize);
+            putDescendingData(map, step, maxSize - currentSize);
             currentSize += step;
 
             nOfPuts = getNumOfPuts(map);
@@ -60,10 +61,20 @@ public class RbtMapPerformanceTest {
         }
     }
 
-    private void putAscendingData(MapInterface<String, String> map, int nOfData){
+    private void putAscendingData(MapInterface<String, String> map, int nOfData, int currentSize){
         String keyAndValue;
 
-        for (int i = 0; i < nOfData; i++) {
+        for (int i = currentSize; i < nOfData + currentSize; i++) {
+            Integer key = i;
+            keyAndValue = key.toString();
+            map.setValue(keyAndValue, keyAndValue);
+        }
+    }
+
+    private void putDescendingData(MapInterface<String, String> map, int nOfData, int maxSize){
+        String keyAndValue;
+
+        for (int i = maxSize; i > maxSize - nOfData; i--) {
             Integer key = i;
             keyAndValue = key.toString();
             map.setValue(keyAndValue, keyAndValue);

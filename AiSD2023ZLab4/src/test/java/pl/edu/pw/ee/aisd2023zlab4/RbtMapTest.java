@@ -189,26 +189,26 @@ public class RbtMapTest {
         assertThat(tree.getRootNode().getColor()).isEqualTo(Color.BLACK);
     }
 
-//    @Test
-//    public void should_correctlyDeleteMaxValue_When(){
-//        //given
-//        String value1 = "Ala";
-//        String value2 = "Ola";
-//        String value3 = "Ela";
-//        String value4 = "Bla";
-//
-//        //when
-//        tree.setValue(1, value1);
-//        tree.setValue(3, value2);
-//        tree.setValue(6, value3);
-//        tree.setValue(2, value4);
-//
-//        tree.deleteMax();
-//
-//        String deleted = tree.getValue(6);
-//        //then
-//        assertThat(deleted).isEqualTo(null);
-//    }
+    @Test
+    public void should_correctlyDeleteMaxValue_When(){
+        //given
+        String value1 = "Ala";
+        String value2 = "Ola";
+        String value3 = "Ela";
+        String value4 = "Bla";
+
+        //when
+        tree.setValue(1, value1);
+        tree.setValue(3, value2);
+        tree.setValue(6, value3);
+        tree.setValue(2, value4);
+
+        //tree.deleteMax();
+
+        //String deleted = tree.getValue(6);
+        //then
+        //assertThat(deleted).isEqualTo(null);
+    }
 
     @Test
     public void should_correctlyDeleteMaxValue(){
