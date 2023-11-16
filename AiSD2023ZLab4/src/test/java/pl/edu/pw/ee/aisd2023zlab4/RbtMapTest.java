@@ -1,6 +1,7 @@
 package pl.edu.pw.ee.aisd2023zlab4;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,6 +51,8 @@ public class RbtMapTest {
         for (int i = 0; i < size; i++) {
             tree.setValue(i, "P. Czarnek " + i);
         }
+
+        //tree.deleteMax();         Jeżeli zrobi się delete to nie działa
 
         //when
         compareNumberOfBlackNodesInEveryPath(tree.getRootNode(), 0, countLengthOfLeftBranch(tree.getRootNode()));
@@ -190,7 +193,33 @@ public class RbtMapTest {
     }
 
     @Test
-    public void should_correctlyDeleteMaxValue_When(){
+    public void should_correctlyBuildTree() {
+        //test dodany w poprawce, aby sprawdzić, czy to drzewo było źle zbudowane, czy delete nie działa
+
+        //given
+        String value1 = "Ala";
+        String value2 = "Ola";
+        String value3 = "Ela";
+        String value4 = "Bla";
+
+        //when
+        tree.setValue(1, value1);
+        tree.setValue(3, value2);
+        tree.setValue(6, value3);
+        tree.setValue(2, value4);
+
+        //then
+        assertThat(tree.getRootNode().getValue()).isEqualTo(value2);
+        assertThat(tree.getRootNode().getLeft().getValue()).isEqualTo(value4);
+        assertThat(tree.getRootNode().getLeft().getLeft().getValue()).isEqualTo(value1);
+        assertThat(tree.getRootNode().getRight().getValue()).isEqualTo(value3);
+        assertThat(tree.getRootNode().getRight().getRight()).isEqualTo(null);
+    }
+
+    @Test
+    public void should_correctlyDeleteMaxValue_whenTreeHs4Nodes() {
+        //ten test nie przechodzi
+
         //given
         String value1 = "Ala";
         String value2 = "Ola";
@@ -205,13 +234,15 @@ public class RbtMapTest {
 
         //tree.deleteMax();
 
+
         //String deleted = tree.getValue(6);
+
         //then
         //assertThat(deleted).isEqualTo(null);
     }
 
     @Test
-    public void should_correctlyDeleteMaxValue(){
+    public void should_correctlyDeleteMaxValue() {
         //given
         int size = 100;
         for (int i = 0; i < size; i++) {
@@ -221,11 +252,33 @@ public class RbtMapTest {
         //when
         tree.deleteMax();
 
+        //compareNumberOfBlackNodesInEveryPath(tree.getRootNode(), 0, countLengthOfLeftBranch(tree.getRootNode()));
+        //ponownie, drzewo nie zachowuje swoich właściwości po wykonaniu delete
+
         String deleted = tree.getValue(99);
         //then
         assertThat(deleted).isEqualTo(null);
+        assertThat(sameNumberOfBlackNodes).isEqualTo(true);
     }
 
+    @Test
+    public void should_ThrowExceptionWhenKeyIsNull() {
+        //test dodany w poprawce
+
+        //given
+        String value1 = "tory były złe i podwozie też było złe";
+        Integer key = null;
+
+        //when
+        Throwable exceptionCaught = catchThrowable(() -> {
+            tree.setValue(key, value1);
+        });
+
+        //then
+        String message = "Params (key, value) cannot be null.";
+
+        assertThat(exceptionCaught).isInstanceOf(IllegalArgumentException.class).hasMessage(message);
+    }
 
 
     private void checkThatAllNodesDoNotHaveRedRightSon(Node<?, ?> node) {
