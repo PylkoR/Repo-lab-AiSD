@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.17" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.217" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="PL"/>
     <property name="sun.boot.library.path" value="C:\Users\rafal\.jdks\openjdk-20.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\rafal\AppData\Local\Temp\surefire2993807663502156379\surefirebooter7273659331026794051.jar C:\Users\rafal\AppData\Local\Temp\surefire2993807663502156379 2023-11-16T14-30-46_771-jvmRun1 surefire11880917465790520296tmp surefire_010144701954045993489tmp"/>
+    <property name="sun.java.command" value="C:\Users\rafal\AppData\Local\Temp\surefire1763852616030725374\surefirebooter10881013357110209365.jar C:\Users\rafal\AppData\Local\Temp\surefire1763852616030725374 2023-11-16T15-08-21_202-jvmRun1 surefire13967657143120825620tmp surefire_011970736684907223382tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\rafal\repoAiDS\2023Z_AISD_git_GR2_gr21\AiSD2023ZLab4\target\test-classes;C:\Users\rafal\repoAiDS\2023Z_AISD_git_GR2_gr21\AiSD2023ZLab4\target\classes;C:\Users\rafal\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\rafal\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\rafal\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\rafal\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\rafal\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\rafal\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\rafal\.m2\repository\org\junit\vintage\junit-vintage-engine\5.8.1\junit-vintage-engine-5.8.1.jar;C:\Users\rafal\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\rafal\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\rafal\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\rafal\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\rafal\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\rafal\.m2\repository\org\mockito\mockito-core\4.0.0\mockito-core-4.0.0.jar;C:\Users\rafal\.m2\repository\net\bytebuddy\byte-buddy\1.11.19\byte-buddy-1.11.19.jar;C:\Users\rafal\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.19\byte-buddy-agent-1.11.19.jar;C:\Users\rafal\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\rafal\AppData\Local\Temp\surefire2993807663502156379\surefirebooter7273659331026794051.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\rafal\AppData\Local\Temp\surefire1763852616030725374\surefirebooter10881013357110209365.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="20.0.1+9-29"/>
@@ -59,15 +59,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="should_correctlyPutOneNodeAsARoot" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.116"/>
-  <testcase name="should_makeBalancedTreeWithSameNumberOfBlackNodesInEveryPath" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.003"/>
-  <testcase name="should_correctlyPutSmallerNodesAndMakeRightRotation" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.004"/>
-  <testcase name="should_CorrectlyPutNodeWithKeyThatAlreadyIsInTree" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
+  <testcase name="should_correctlyPutOneNodeAsARoot" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.152"/>
+  <testcase name="should_makeBalancedTreeWithSameNumberOfBlackNodesInEveryPath" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.004"/>
+  <testcase name="should_correctlyPutSmallerNodesAndMakeRightRotation" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.006"/>
+  <testcase name="should_CorrectlyPutNodeWithKeyThatAlreadyIsInTree" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.002"/>
   <testcase name="should_correctlyPutBiggerNodesAndMakeLeftRotation" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
   <testcase name="should_correctlyDeleteMaxValue_whenTreeHs4Nodes" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
-  <testcase name="should_correctlyDeleteMaxValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_correctlyBuildTree" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
+  <testcase name="should_ThrowExceptionWhenKeyIsNull" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.006"/>
+  <testcase name="should_correctlyDeleteMaxValue" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
+  <testcase name="should_correctlyBuildTree" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
   <testcase name="should_AddSmallerNodeOnTheLeftSide" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.001"/>
   <testcase name="should_correctlyPutAndGetSomeValues" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0"/>
-  <testcase name="should_CorrectlyPutBigNumberOfNodesAndGetOne" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.041"/>
+  <testcase name="should_CorrectlyPutBigNumberOfNodesAndGetOne" classname="pl.edu.pw.ee.aisd2023zlab4.RbtMapTest" time="0.043"/>
 </testsuite>

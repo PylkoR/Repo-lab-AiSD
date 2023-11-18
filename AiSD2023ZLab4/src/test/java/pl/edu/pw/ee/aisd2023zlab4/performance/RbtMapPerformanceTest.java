@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Random;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -27,7 +28,7 @@ public class RbtMapPerformanceTest {
 
     @Test
     public void countTreeHeightDependingOnDataSize() {
-        MapInterface<String, String> map = new RbtMap<>();
+        MapInterface<Integer, String> map = new RbtMap<>();
         int currentSize = 0;
         int maxSize = 1_000_000;
         int step = 100;
@@ -35,9 +36,9 @@ public class RbtMapPerformanceTest {
         int nOfPuts;
 
         while (currentSize < maxSize) {
-            //putRandomData(map, step);
+            putRandomData(map, step);
             //putAscendingData(map, step, currentSize);
-            putDescendingData(map, step, maxSize - currentSize);
+            //putDescendingData(map, step, maxSize - currentSize);
             currentSize += step;
 
             nOfPuts = getNumOfPuts(map);
@@ -52,32 +53,27 @@ public class RbtMapPerformanceTest {
         f.delete();
     }
 
-    private void putRandomData(MapInterface<String, String> map, int nOfData) {
-        String keyAndValue;
+    private void putRandomData(MapInterface<Integer, String> map, int nOfData) {
+        Random rand = new Random();
 
         for (int i = 0; i < nOfData; i++) {
-            keyAndValue = UUID.randomUUID().toString();
-            map.setValue(keyAndValue, keyAndValue);
+            int k = rand.nextInt();
+            String value = "node" + k;
+            map.setValue(k, value);
         }
     }
 
-    private void putAscendingData(MapInterface<String, String> map, int nOfData, int currentSize){
-        String keyAndValue;
-
+    private void putAscendingData(MapInterface<Integer, String> map, int nOfData, int currentSize) {
         for (int i = currentSize; i < nOfData + currentSize; i++) {
-            Integer key = i;
-            keyAndValue = key.toString();
-            map.setValue(keyAndValue, keyAndValue);
+            String value = "node" + i;
+            map.setValue(i, value);
         }
     }
 
-    private void putDescendingData(MapInterface<String, String> map, int nOfData, int maxSize){
-        String keyAndValue;
-
+    private void putDescendingData(MapInterface<Integer, String> map, int nOfData, int maxSize) {
         for (int i = maxSize; i > maxSize - nOfData; i--) {
-            Integer key = i;
-            keyAndValue = key.toString();
-            map.setValue(keyAndValue, keyAndValue);
+            String value = "node" + i;
+            map.setValue(i, value);
         }
     }
 
@@ -94,7 +90,7 @@ public class RbtMapPerformanceTest {
 
     }
 
-    private int getNumOfPuts(MapInterface<String, String> map) {
+    private int getNumOfPuts(MapInterface<Integer, String> map) {
         String fieldTree = "tree";
         String fieldNumOfPuts = "currentNumOfPut";
 

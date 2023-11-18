@@ -2,4 +2,4 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 AiSD2023ZLab4,pl.edu.pw.ee.aisd2023zlab4,Color,0,15,0,0,0,2,0,1,0,1
 AiSD2023ZLab4,pl.edu.pw.ee.aisd2023zlab4,RedBlackTree,18,368,6,50,5,93,6,47,0,25
 AiSD2023ZLab4,pl.edu.pw.ee.aisd2023zlab4,Node,0,48,0,0,0,19,0,11,0,11
-AiSD2023ZLab4,pl.edu.pw.ee.aisd2023zlab4,RbtMap,10,33,3,3,2,11,3,5,0,5
+AiSD2023ZLab4,pl.edu.pw.ee.aisd2023zlab4,RbtMap,5,38,2,4,1,12,2,6,0,5

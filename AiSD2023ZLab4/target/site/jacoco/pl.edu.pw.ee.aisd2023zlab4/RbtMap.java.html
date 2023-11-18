@@ -12,8 +12,8 @@ public class RbtMap&lt;K extends Comparable&lt;K&gt;, V&gt; implements MapInterf
 
     @Override
     public void setValue(K key, V value) {
-<span class="pc bpc" id="L15" title="2 of 4 branches missed.">        if (key == null || value == null) {</span>
-<span class="nc" id="L16">            throw new IllegalArgumentException(&quot;Params (key, value) cannot be null.&quot;);</span>
+<span class="pc bpc" id="L15" title="1 of 4 branches missed.">        if (key == null || value == null) {</span>
+<span class="fc" id="L16">            throw new IllegalArgumentException(&quot;Params (key, value) cannot be null.&quot;);</span>
         }
 <span class="fc" id="L18">        tree.put(key, value);</span>
 <span class="fc" id="L19">    }</span>
