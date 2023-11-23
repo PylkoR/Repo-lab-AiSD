@@ -6,15 +6,31 @@ public class Node {
     private Node left;
     private Node right;
 
-    public void Node(char letter, int quantity){
+    public Node(char letter, int quantity) {
         this.letter = letter;
         this.quantity = quantity;
     }
 
-    public void Node(char letter, int quantity, Node left, Node right){
+    public Node(char letter, int quantity, Node left, Node right) {
         this.letter = letter;
         this.quantity = quantity;
         this.left = left;
         this.right = right;
+    }
+
+    public char getLetter() {
+        return letter;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public Node getRight() {
+        return right;
     }
 }
