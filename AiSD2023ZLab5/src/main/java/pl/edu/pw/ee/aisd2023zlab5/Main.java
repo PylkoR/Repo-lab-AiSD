@@ -1,5 +1,8 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
+import java.sql.SQLOutput;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
         PriorityHeap heap = new PriorityHeap(args[0]);
@@ -40,7 +43,13 @@ public class Main {
         Node huffman = tree.getRoot();
 
         int tmp = huffman.getQuantity();
-        System.out.println(tmp);
+        System.out.println("korzen " + tmp);
+
+        tree.createCodes();
+        for(Map.Entry code : tree.getCodes().entrySet())
+        {
+            System.out.println(code.getKey() + " - " + code.getValue());
+        }
 
     }
 }
