@@ -5,19 +5,20 @@ import java.io.IOException;
 
 public class PriorityHeap {
     private Node[] letters;
-    private int size;
+    private int lastId;
+
 
     public PriorityHeap(String fileName) {
         this.letters = createHeap(fileName);
-        this.size = letters.length - 1;
+        this.lastId = letters.length - 1;
     }
 
     public Node[] getArray() {
         return letters;
     }
 
-    public int getSize(){
-        return size;
+    public int getSize() {
+        return lastId;
     }
 
     private Node[] createHeap(String fileName) {
@@ -28,8 +29,9 @@ public class PriorityHeap {
             int asciiSign;
 
             while ((asciiSign = fileReader.read()) != -1) {
-                if (ascii[asciiSign]++ == 0)
+                if (ascii[asciiSign]++ == 0) {
                     n++;
+                }
             }
 
         } catch (IOException e) {
@@ -88,20 +90,20 @@ public class PriorityHeap {
     }
 
     public Node extractMin() {
-        if (size < 0) {
+        if (lastId < 0) {
             throw new RuntimeException("Kopiec jest już pusty");
         }
         Node min = letters[0];
-        letters[0] = letters[size];
-        size--;
-        heapify(letters, 0, size);
+        letters[0] = letters[lastId];
+        lastId--;
+        heapify(letters, 0, lastId);
 
         return min;
     }
 
     public void insertToHeap(Node newNode) {
-        size++;
-        int i = size;
+        lastId++;
+        int i = lastId;
         int parent;
         if (i % 2 == 0) {
             parent = i / 2 - 1;
