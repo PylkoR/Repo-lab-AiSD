@@ -18,7 +18,7 @@ public class Main {
         Node min3 = heap.extractMin();
         Node min4 = heap.extractMin();
         Node min5 = heap.extractMin();
-        //Node min6 = heap.extractMin();
+        Node min6 = heap.extractMin();
         System.out.println(" ");
 
         System.out.println(min.getLetter() + " " + min.getQuantity());
@@ -27,7 +27,7 @@ public class Main {
         System.out.println(min3.getLetter() + " " + min3.getQuantity());
         System.out.println(min4.getLetter() + " " + min4.getQuantity());
         System.out.println(min5.getLetter() + " " + min5.getQuantity());
-        //System.out.println(min6.getLetter() + " " + min6.getQuantity());
+        System.out.println(min6.getLetter() + " " + min6.getQuantity());
 
         System.out.println(" ");
 
@@ -44,9 +44,11 @@ public class Main {
         int tmp = huffman.getQuantity();
         System.out.println("korzen " + tmp);
 
-        tree.createCodes();
-        for (Map.Entry code : tree.getCodes().entrySet()) {
-            System.out.println(code.getKey() + " - " + code.getValue());
+        String[] codes = tree.getCodes();
+        for (int i = 0; i < codes.length; i++) {
+            if (codes[i] != null) {
+                System.out.println((char) i + " - " + codes[i]);
+            }
         }
 
     }

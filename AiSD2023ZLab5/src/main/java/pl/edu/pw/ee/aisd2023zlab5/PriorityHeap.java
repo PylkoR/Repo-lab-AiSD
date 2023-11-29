@@ -5,23 +5,22 @@ import java.io.IOException;
 
 public class PriorityHeap {
     private Node[] letters;
-    private int lastId;
+    private int lastId = -1;
 
 
     public PriorityHeap(String fileName) {
-        this.letters = createHeap(fileName);
-        this.lastId = letters.length - 1;
+        createHeap(fileName);
     }
 
     public Node[] getArray() {
         return letters;
     }
 
-    public int getSize() {
+    public int getLastNodeId() {
         return lastId;
     }
 
-    private Node[] createHeap(String fileName) {
+    private void createHeap(String fileName) {
         int[] ascii = new int[256];
         int n = 0;
 
@@ -38,71 +37,42 @@ public class PriorityHeap {
             throw new RuntimeException(e);
         }
 
-        Node[] letters = new Node[n];
-        int k = 0;
+        letters = new Node[n];
 
         for (int i = 0; i < 256; i++) {
             if (ascii[i] != 0) {
                 Node node = new Node((char) i, ascii[i]);
-                letters[k++] = node;
+                insertToHeap(node);
             }
         }
-
-        buildHeap(letters);
-
-        return letters;
     }
 
-    private void buildHeap(Node[] letters) {
-        int n = letters.length - 1;
-
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(letters, i, n);
-        }
-    }
-
-    private void heapify(Node[] letters, int parentId, int maxId) {
-        int leftChildId = 2 * parentId + 1;
-        int rightChildId = 2 * parentId + 2;
+    private void heapDown() {
+        int parentId = 0;
+        int leftChildId = 1;
+        int rightChildId = 2;
         int lowestQuantity = parentId;
 
-        if (leftChildId <= maxId && letters[leftChildId].getQuantity() < letters[lowestQuantity].getQuantity()) {
-            lowestQuantity = leftChildId;
-        }
+        while (true) {
+            if (leftChildId <= lastId && letters[leftChildId].getQuantity() < letters[lowestQuantity].getQuantity()) {
+                lowestQuantity = leftChildId;
+            }
 
-        if (rightChildId <= maxId && letters[rightChildId].getQuantity() < letters[lowestQuantity].getQuantity()) {
-            lowestQuantity = rightChildId;
-        }
+            if (rightChildId <= lastId && letters[rightChildId].getQuantity() < letters[lowestQuantity].getQuantity()) {
+                lowestQuantity = rightChildId;
+            }
 
-        if (lowestQuantity != parentId) {
-            swap(letters, parentId, lowestQuantity);
-            heapify(letters, lowestQuantity, maxId);
-        }
-    }
+            if (lowestQuantity != parentId) {
+                swap(parentId, lowestQuantity);
+            }else break;
 
-    private void swap(Node[] heap, int firstId, int secondId) {
-        if (firstId != secondId) {
-
-            Node firstNode = heap[firstId];
-            heap[firstId] = heap[secondId];
-            heap[secondId] = firstNode;
+            parentId = lowestQuantity;
+            leftChildId = 2 * parentId + 1;
+            rightChildId = 2 * parentId + 2;
         }
     }
 
-    public Node extractMin() {
-        if (lastId < 0) {
-            throw new RuntimeException("Kopiec jest już pusty");
-        }
-        Node min = letters[0];
-        letters[0] = letters[lastId];
-        lastId--;
-        heapify(letters, 0, lastId);
-
-        return min;
-    }
-
-    public void insertToHeap(Node newNode) {
-        lastId++;
+    private void heapUp() {
         int i = lastId;
         int parent;
         if (i % 2 == 0) {
@@ -111,16 +81,46 @@ public class PriorityHeap {
             parent = i / 2;
         }
 
-        while ((i > 1) && letters[parent].getQuantity() > newNode.getQuantity()) {
-            letters[i] = letters[parent];
+        while ((i >= 1) && letters[parent].getQuantity() > letters[i].getQuantity()) {
+            swap(parent, i);
             i = parent;
-            if (parent % 2 == 0) {
-                parent = parent / 2 - 1;
+            if (i % 2 == 0) {
+                parent = i / 2 - 1;
             } else {
-                parent = parent / 2;
+                parent = i / 2;
             }
         }
 
-        letters[i] = newNode;
+    }
+
+    private void swap(int firstId, int secondId) {
+        if (firstId != secondId) {
+
+            Node firstNode = letters[firstId];
+            letters[firstId] = letters[secondId];
+            letters[secondId] = firstNode;
+        }
+    }
+
+    public Node extractMin() {
+        if (lastId < 0) {
+            throw new RuntimeException("Kopiec jest już pusty!");
+        }
+        Node min = letters[0];
+        letters[0] = letters[lastId];
+        lastId--;
+        heapDown();
+
+        return min;
+    }
+
+    public void insertToHeap(Node newNode) {
+        lastId++;
+        if (lastId == letters.length) {
+            throw new RuntimeException("Kopiec jest już pełny!");
+        }
+
+        letters[lastId] = newNode;
+        heapUp();
     }
 }
