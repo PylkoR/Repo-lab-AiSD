@@ -1,14 +1,12 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
-import java.util.Map;
-
 public class Main {
     public static void main(String[] args) {
         PriorityHeap heap = new PriorityHeap(args[0]);
         Node[] heapNodes = heap.getArray();
 
-        for (int i = 0; i < heapNodes.length; i++) {
-            System.out.println(heapNodes[i].getLetter() + " " + heapNodes[i].getQuantity());
+        for (Node heapNode : heapNodes) {
+            System.out.println(heapNode.getLetter() + " " + heapNode.getQuantity());
         }
 
         System.out.println(" ");
@@ -32,8 +30,8 @@ public class Main {
         System.out.println(" ");
 
 
-        for (int i = 0; i < heapNodes.length; i++) {
-            System.out.println(heapNodes[i].getLetter() + " " + heapNodes[i].getQuantity());
+        for (Node heapNode : heapNodes) {
+            System.out.println(heapNode.getLetter() + " " + heapNode.getQuantity());
         }
 
         System.out.println("\n");
@@ -50,6 +48,9 @@ public class Main {
                 System.out.println((char) i + " - " + codes[i]);
             }
         }
+
+        Compressor compressor = new Compressor();
+        compressor.compress(args[0]);
 
     }
 }
