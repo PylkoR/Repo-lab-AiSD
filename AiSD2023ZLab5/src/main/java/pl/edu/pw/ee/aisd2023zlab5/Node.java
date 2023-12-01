@@ -21,7 +21,10 @@ public class Node {
         this.isLeaf = false;
     }
 
-    public boolean isLeaf(){return this.isLeaf;}
+    public boolean isLeaf() {
+        return this.isLeaf;
+    }
+
     public char getLetter() {
         return letter;
     }

@@ -2,7 +2,7 @@ package pl.edu.pw.ee.aisd2023zlab5;
 
 public class HuffmanTree {
     private Node root;
-    private String[] codes = new String[256];
+    private final String[] codes = new String[256];
 
     public HuffmanTree(String fileName) {
         createHuffmanTree(fileName);

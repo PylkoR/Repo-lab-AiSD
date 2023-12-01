@@ -64,7 +64,7 @@ public class PriorityHeap {
 
             if (lowestQuantity != parentId) {
                 swap(parentId, lowestQuantity);
-            }else break;
+            } else break;
 
             parentId = lowestQuantity;
             leftChildId = 2 * parentId + 1;
