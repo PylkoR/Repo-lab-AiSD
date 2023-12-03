@@ -3,6 +3,7 @@ package pl.edu.pw.ee.aisd2023zlab5;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 
 public class Compressor {
     private String treeToOutputFile = "";
@@ -13,14 +14,14 @@ public class Compressor {
 
         try (FileInputStream fileReader = new FileInputStream(fileName)) {
             int asciiSign;
-            String outputFile = fileName + ".h";
+            String outputFileName = fileName + ".h";
 
-            try (FileOutputStream fileOutput = new FileOutputStream(outputFile)) {
+            try (RandomAccessFile fileOutput = new RandomAccessFile(outputFileName, "rw")) {
                 int toWrite = 0;
                 int filled = 3;
 
                 compressTreeToString(tree.getRoot());
-                System.out.println(treeToOutputFile);
+                //System.out.println(treeToOutputFile); //wypisuje skopmpresowane drzewo jako string
                 for (int i = 0; i < treeToOutputFile.length(); i++) {
                     char currentChar = treeToOutputFile.charAt(i);
 
@@ -30,6 +31,7 @@ public class Compressor {
                         filled++;
                         if (filled == 8) {
                             fileOutput.write(toWrite);
+                            //System.out.println((int)toWrite);
                             toWrite = 0;
                             filled = 0;
                         }
@@ -46,6 +48,7 @@ public class Compressor {
 
                             if (filled == 8) {
                                 fileOutput.write(toWrite);
+                                //System.out.println((int)toWrite);
                                 toWrite = 0;
                                 filled = 0;
                             }
@@ -55,6 +58,7 @@ public class Compressor {
                         filled++;
                         if (filled == 8) {
                             fileOutput.write(toWrite);
+                            //System.out.println((int)toWrite);
                             toWrite = 0;
                             filled = 0;
                         }
@@ -75,6 +79,7 @@ public class Compressor {
 
                         if (filled == 8) {
                             fileOutput.write(toWrite);
+                            //System.out.println((int)toWrite);
                             toWrite = 0;
                             filled = 0;
                         }
@@ -83,6 +88,16 @@ public class Compressor {
                 if (filled != 0) {
                     toWrite = toWrite << 8 - filled;
                     fileOutput.write(toWrite);
+                    //System.out.println((int)toWrite);
+                    //System.out.println(filled); //wypisuje wartość filled
+
+                    fileOutput.seek(0);
+                    int firstByte = fileOutput.read();
+                    filled = filled << 5;
+                    firstByte = filled | firstByte;
+                    fileOutput.seek(0);
+                    fileOutput.write(firstByte);
+                    //System.out.println((int)firstByte);
                 }
 
             } catch (IOException e) {
