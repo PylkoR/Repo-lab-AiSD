@@ -14,7 +14,7 @@ public class AiSD2023ZBonus {
             for (int j = i + 1; j <= text.length(); j++) {
 
                 String subText = text.substring(i, j);
-                if (subText.length() > 1 && isPalindrom(subText)) {
+                if (subText.length() > 1 && isPalindrome(subText)) {
                     n++;
                 }
             }
@@ -27,17 +27,10 @@ public class AiSD2023ZBonus {
         }
     }
 
-    private boolean isPalindrom(String subText){
-        int firstId = 0;
-        int lastId = subText.length() - 1;
+    private boolean isPalindrome(String subText){
+        StringBuilder subTextReversed = new StringBuilder();
+        subTextReversed.append(subText).reverse();
 
-        while (firstId < lastId) {
-            if (subText.charAt(firstId) != subText.charAt(lastId)) {
-                return false;
-            }
-            firstId++;
-            lastId--;
-        }
-        return true;
+        return subTextReversed.toString().equals(subText);
     }
 }

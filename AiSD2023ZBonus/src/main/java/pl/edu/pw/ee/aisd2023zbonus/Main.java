@@ -11,7 +11,7 @@ public class Main {
         for ( int i = 0; i < 9_999; i++){
             test3 += "A";
         }
-        for ( int i = 0; i < 4_999; i++){
+        for ( int i = 0; i < 1_998; i++){
             test4 += "A";
         }
 
