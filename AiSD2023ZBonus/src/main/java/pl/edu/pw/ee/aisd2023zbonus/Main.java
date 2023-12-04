@@ -1,17 +1,17 @@
 package pl.edu.pw.ee.aisd2023zbonus;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String text = "KOKOO";
         String test = "KOKON";
         String test2 = "OOKOO";
         String testNull = "BBB";
         String test3 = "";
         String test4 = "";
-        for ( int i = 0; i < 9_999; i++){
+        for (int i = 0; i < 9_999; i++) {
             test3 += "A";
         }
-        for ( int i = 0; i < 1_998; i++){
+        for (int i = 0; i < 1_998; i++) {
             test4 += "A";
         }
 
