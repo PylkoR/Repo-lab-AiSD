@@ -8,39 +8,26 @@ public class Main {
         for (Node heapNode : heapNodes) {
             System.out.println(heapNode.getLetter() + " " + heapNode.getQuantity());
         }
+        System.out.println("wezly po odczycie");
 
-        System.out.println(" ");
-        Node min = heap.extractMin();
-        Node min1 = heap.extractMin();
-        Node min2 = heap.extractMin();
-        Node min3 = heap.extractMin();
-        Node min4 = heap.extractMin();
-        Node min5 = heap.extractMin();
-        Node min6 = heap.extractMin();
-        System.out.println(" ");
-
-        System.out.println(min.getLetter() + " " + min.getQuantity());
-        System.out.println(min1.getLetter() + " " + min1.getQuantity());
-        System.out.println(min2.getLetter() + " " + min2.getQuantity());
-        System.out.println(min3.getLetter() + " " + min3.getQuantity());
-        System.out.println(min4.getLetter() + " " + min4.getQuantity());
-        System.out.println(min5.getLetter() + " " + min5.getQuantity());
-        System.out.println(min6.getLetter() + " " + min6.getQuantity());
-
-        System.out.println(" ");
-
+        for (int i = 0; i < heapNodes.length; i++) {
+            Node min = heap.extractMin();
+            System.out.println(min.getLetter() + " " + min.getQuantity());
+        }
+        System.out.println("wyjęte z kopca");
 
         for (Node heapNode : heapNodes) {
             System.out.println(heapNode.getLetter() + " " + heapNode.getQuantity());
         }
+        System.out.println("kopiec po wyjęciu węzłów");
 
-        System.out.println("\n");
+        System.out.println("\nDrzewo");
 
         HuffmanTree tree = new HuffmanTree(args[0]);
         Node huffman = tree.getRoot();
 
         int tmp = huffman.getQuantity();
-        System.out.println("korzen " + tmp);
+        System.out.println("korzen " + tmp + "\n");
 
         String[] codes = tree.getCodes();
         for (int i = 0; i < codes.length; i++) {
@@ -49,6 +36,7 @@ public class Main {
             }
         }
 
+        //KOMPRESJA
         Compressor compressor = new Compressor();
         compressor.compress(args[0]);
 

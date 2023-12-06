@@ -1,7 +1,6 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -14,14 +13,15 @@ public class Compressor {
 
         try (FileInputStream fileReader = new FileInputStream(fileName)) {
             int asciiSign;
-            String outputFileName = fileName + ".h";
+            String outputFileName = fileName + ".huf"; //TODO
 
             try (RandomAccessFile fileOutput = new RandomAccessFile(outputFileName, "rw")) {
                 int toWrite = 0;
                 int filled = 3;
 
                 compressTreeToString(tree.getRoot());
-                //System.out.println(treeToOutputFile); //wypisuje skopmpresowane drzewo jako string
+                System.out.println(treeToOutputFile);       //wypisuje skopmpresowane drzewo jako string
+
                 for (int i = 0; i < treeToOutputFile.length(); i++) {
                     char currentChar = treeToOutputFile.charAt(i);
 
@@ -89,7 +89,7 @@ public class Compressor {
                     toWrite = toWrite << 8 - filled;
                     fileOutput.write(toWrite);
                     //System.out.println((int)toWrite);
-                    //System.out.println(filled); //wypisuje wartość filled
+                    System.out.println("filled" + filled); //wypisuje wartość filled
 
                     fileOutput.seek(0);
                     int firstByte = fileOutput.read();
