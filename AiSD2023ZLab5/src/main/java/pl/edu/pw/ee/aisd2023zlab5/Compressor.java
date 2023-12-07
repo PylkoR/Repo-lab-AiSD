@@ -3,19 +3,28 @@ package pl.edu.pw.ee.aisd2023zlab5;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class Compressor {
     private String treeToOutputFile = "";
 
-    public void compress(String fileName) {
+    public void compress(String fileName, String outputFile) throws IOException {
         HuffmanTree tree = new HuffmanTree(fileName);
         String[] codes = tree.getCodes();
+        FileChannel output = FileChannel.open(Paths.get(outputFile), StandardOpenOption.WRITE);
+        FileChannel input = FileChannel.open(Paths.get(fileName), StandardOpenOption.READ);
+        output.truncate(0);
+
+        if (input.size() < 3) {
+            throw new RuntimeException("Plik jest za mały, nie nadaje się do kompresji.");
+        }
 
         try (FileInputStream fileReader = new FileInputStream(fileName)) {
             int asciiSign;
-            String outputFileName = fileName + ".huf"; //TODO
 
-            try (RandomAccessFile fileOutput = new RandomAccessFile(outputFileName, "rw")) {
+            try (RandomAccessFile fileOutput = new RandomAccessFile(outputFile, "rw")) {
                 int toWrite = 0;
                 int filled = 3;
 

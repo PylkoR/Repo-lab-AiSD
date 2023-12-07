@@ -1,7 +1,9 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         PriorityHeap heap = new PriorityHeap(args[0]);
         Node[] heapNodes = heap.getArray();
 
@@ -38,13 +40,23 @@ public class Main {
 
         //KOMPRESJA
         Compressor compressor = new Compressor();
-        compressor.compress(args[0]);
+        compressor.compress(args[0],
+                "C:\\Users\\rafal\\repoAiDS\\2023Z_AISD_git_GR2_gr21\\AiSD2023ZLab5\\src\\CompressedFiles\\Kompresja.huf");
 
         System.out.println("\nDekompresja");
 
         //DEKOMPRESJA
         Decompressor decompressor = new Decompressor();
-        decompressor.decompress(args[0] + ".huf");
+        decompressor.decompress("C:\\Users\\rafal\\repoAiDS\\2023Z_AISD_git_GR2_gr21\\AiSD2023ZLab5\\src\\CompressedFiles\\Kompresja.huf",
+                "C:\\Users\\rafal\\repoAiDS\\2023Z_AISD_git_GR2_gr21\\AiSD2023ZLab5\\src\\DecompressedFiles\\Dekompresja.txt");
 
+
+//        //KOMPRESJA
+//        Compressor compressor = new Compressor();
+//        compressor.compress(args[0], args[1]);
+//
+//        //DEKOMPRESJA
+//        Decompressor decompressor = new Decompressor();
+//        decompressor.decompress(args[0], args[1]);
     }
 }

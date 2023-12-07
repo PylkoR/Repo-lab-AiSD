@@ -10,7 +10,7 @@ public class Decompressor {
     int currentByte;
     int nextByte;
 
-    public void decompress(String fileToDecompress) {
+    public void decompress(String fileToDecompress, String outputFile) {
         try (FileInputStream fileReader = new FileInputStream(fileToDecompress)) {
             //DRZEWO
             currentByte = fileReader.read();
@@ -31,7 +31,7 @@ public class Decompressor {
             }
 
             //TEKST
-            try (FileOutputStream outputStream = new FileOutputStream("Dekompresowany.txt")) {
+            try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
                 int bit;
                 Node currentNode = root;
 
@@ -83,8 +83,12 @@ public class Decompressor {
             char letter = 0;
             for (int i = 0; i < 8; i++) {
                 letter = (char) (letter << 1);
-                if (readBit(fileReader) != 0) {
+                int letterBit = readBit(fileReader);
+
+                if (letterBit != 0 && letterBit != -1) {
                     letter++;
+                } else if (letterBit == -1) {
+                    throw new RuntimeException("kompresowany plik był zbyt mały!");
                 }
             }
 
@@ -101,8 +105,12 @@ public class Decompressor {
             char letter = 0;
             for (int i = 0; i < 8; i++) {
                 letter = (char) (letter << 1);
-                if (readBit(fileReader) != 0) {
+                int letterBit = readBit(fileReader);
+
+                if (letterBit != 0 && letterBit != -1) {
                     letter++;
+                } else if (letterBit == -1) {
+                    throw new RuntimeException("kompresowany plik był zbyt mały!");
                 }
             }
 
