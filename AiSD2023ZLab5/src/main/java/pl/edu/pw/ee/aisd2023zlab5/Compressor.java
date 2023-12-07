@@ -31,7 +31,7 @@ public class Compressor {
                         filled++;
                         if (filled == 8) {
                             fileOutput.write(toWrite);
-                            //System.out.println((int)toWrite);
+                            //System.out.println((int)toWrite + " 1");
                             toWrite = 0;
                             filled = 0;
                         }
@@ -48,7 +48,7 @@ public class Compressor {
 
                             if (filled == 8) {
                                 fileOutput.write(toWrite);
-                                //System.out.println((int)toWrite);
+                                //System.out.println((int)toWrite + " petla");
                                 toWrite = 0;
                                 filled = 0;
                             }
@@ -58,7 +58,7 @@ public class Compressor {
                         filled++;
                         if (filled == 8) {
                             fileOutput.write(toWrite);
-                            //System.out.println((int)toWrite);
+                            //System.out.println((int)toWrite + " 0");
                             toWrite = 0;
                             filled = 0;
                         }
@@ -79,7 +79,7 @@ public class Compressor {
 
                         if (filled == 8) {
                             fileOutput.write(toWrite);
-                            //System.out.println((int)toWrite);
+                            //System.out.println((int)toWrite + " tekst");
                             toWrite = 0;
                             filled = 0;
                         }
@@ -88,7 +88,7 @@ public class Compressor {
                 if (filled != 0) {
                     toWrite = toWrite << 8 - filled;
                     fileOutput.write(toWrite);
-                    //System.out.println((int)toWrite);
+                    //System.out.println((int)toWrite + " filled");
                     System.out.println("filled: " + filled); //wypisuje wartość filled
 
                     fileOutput.seek(0);
@@ -97,11 +97,10 @@ public class Compressor {
                     firstByte = filled | firstByte;
                     fileOutput.seek(0);
                     fileOutput.write(firstByte);
-                    //System.out.println((int)firstByte);
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
 
         } catch (IOException e) {

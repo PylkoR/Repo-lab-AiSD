@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Decompressor {
     Node root;
-    int readed = 4;
+    int read = 4;
     int currentByte;
     int nextByte;
 
@@ -18,31 +18,18 @@ public class Decompressor {
             int filled = (currentByte & 0b1110_0000) >> 5;
             System.out.println("filled: " + filled);
 
-            if ((currentByte & 0b0001_0000) != 0) {
-                readed++;
-                char letter = 0;
-                for (int i = 0; i < 8; i++) {
-                    letter = (char) (letter << 1);
-                    if (readBit(fileReader) != 0) {
-                        letter++;
-                    }
+            root = new Node('r', 0, false);
+            recreateTree(root, fileReader);
+
+            HuffmanTree hufTree = new HuffmanTree(root);
+
+            String[] codes = hufTree.getCodes();
+            for (int i = 0; i < codes.length; i++) {
+                if (codes[i] != null) {
+                    System.out.println((char) i + " - " + codes[i]);
                 }
-
-                root = new Node(letter, 0);
-                System.out.println(letter);
-            } else {
-                root = new Node('r', 0, false);
-                recreateTree(root, fileReader);
-
-//                HuffmanTree hufTree = new HuffmanTree(root);
-//
-//                String[] codes = hufTree.getCodes();
-//                for (int i = 0; i < codes.length; i++) {
-//                    if (codes[i] != null) {
-//                        System.out.println((char) i + " - " + codes[i]);
-//                    }
-//                }
             }
+
             //TEKST
             try (FileOutputStream outputStream = new FileOutputStream("Dekompresowany.txt")) {
                 int bit;
@@ -129,15 +116,15 @@ public class Decompressor {
     }
 
     private int readBit(FileInputStream fileReader) throws IOException {
-        if (readed == 8) {
+        if (read == 8) {
             currentByte = nextByte;
             nextByte = fileReader.read();
-            readed = 0;
+            read = 0;
         }
 
-        int bitReaded = 0b1000_0000 >> readed;
+        int bitReaded = 0b1000_0000 >> read;
         bitReaded = bitReaded & currentByte;
-        readed++;
+        read++;
 
         if (nextByte == -1) {
             return -1;

@@ -37,7 +37,14 @@ public class PriorityHeap {
             throw new RuntimeException(e);
         }
 
-        letters = new Node[n];
+        if (n == 1) {
+            n++;
+            letters = new Node[n];
+            Node fakeNode = new Node((char) 0, 0);
+            insertToHeap(fakeNode);
+        } else {
+            letters = new Node[n];
+        }
 
         for (int i = 0; i < 256; i++) {
             if (ascii[i] != 0) {
@@ -116,7 +123,7 @@ public class PriorityHeap {
 
     public void insertToHeap(Node newNode) {
         lastId++;
-        if (lastId == letters.length) {
+        if (lastId >= letters.length) {
             throw new RuntimeException("Kopiec jest już pełny!");
         }
 
