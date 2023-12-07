@@ -89,7 +89,7 @@ public class Compressor {
                     toWrite = toWrite << 8 - filled;
                     fileOutput.write(toWrite);
                     //System.out.println((int)toWrite);
-                    System.out.println("filled" + filled); //wypisuje wartość filled
+                    System.out.println("filled: " + filled); //wypisuje wartość filled
 
                     fileOutput.seek(0);
                     int firstByte = fileOutput.read();

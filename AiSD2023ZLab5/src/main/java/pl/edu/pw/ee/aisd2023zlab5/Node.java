@@ -13,6 +13,12 @@ public class Node {
         this.isLeaf = true;
     }
 
+    public Node(char letter, int quantity, boolean isLeaf) {
+        this.letter = letter;
+        this.quantity = quantity;
+        this.isLeaf = isLeaf;
+    }
+
     public Node(char letter, int quantity, Node left, Node right) {
         this.letter = letter;
         this.quantity = quantity;
@@ -41,4 +47,13 @@ public class Node {
     public Node getRight() {
         return right;
     }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
+    }
+
 }

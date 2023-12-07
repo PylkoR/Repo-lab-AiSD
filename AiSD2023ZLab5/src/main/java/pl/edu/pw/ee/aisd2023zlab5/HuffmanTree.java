@@ -8,6 +8,11 @@ public class HuffmanTree {
         createHuffmanTree(fileName);
     }
 
+    public HuffmanTree(Node root) {
+        traverseTree(root, "", "");
+    }
+
+
     private void createHuffmanTree(String fileName) {
         PriorityHeap heap = new PriorityHeap(fileName);
         while (heap.getLastNodeId() > 0) {

@@ -40,5 +40,11 @@ public class Main {
         Compressor compressor = new Compressor();
         compressor.compress(args[0]);
 
+        System.out.println("\nDekompresja");
+
+        //DEKOMPRESJA
+        Decompressor decompressor = new Decompressor();
+        decompressor.decompress(args[0] + ".huf");
+
     }
 }
