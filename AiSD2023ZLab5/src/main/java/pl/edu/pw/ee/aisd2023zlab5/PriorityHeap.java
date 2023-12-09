@@ -7,6 +7,9 @@ public class PriorityHeap {
     private Node[] letters;
     private int lastId = -1;
 
+    public PriorityHeap(int size) {
+        this.letters = new Node[size];
+    }
 
     public PriorityHeap(String fileName) {
         createHeap(fileName);
