@@ -12,7 +12,6 @@ public class HuffmanTree {
         traverseTree(root, "", "");
     }
 
-
     private void createHuffmanTree(String fileName) {
         PriorityHeap heap = new PriorityHeap(fileName);
         while (heap.getLastNodeId() > 0) {
@@ -30,7 +29,6 @@ public class HuffmanTree {
     public Node getRoot() {
         return root;
     }
-
 
     private void traverseTree(Node node, String code, String param) {
         code += param;

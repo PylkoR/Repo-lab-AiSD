@@ -14,6 +14,9 @@ public class Decompressor {
         try (FileInputStream fileReader = new FileInputStream(fileToDecompress)) {
             //DRZEWO
             currentByte = fileReader.read();
+            if (currentByte == -1) {
+                throw new IllegalArgumentException("Plik jest pusty!");
+            }
             nextByte = fileReader.read();
             int filled = (currentByte & 0b1110_0000) >> 5;
 

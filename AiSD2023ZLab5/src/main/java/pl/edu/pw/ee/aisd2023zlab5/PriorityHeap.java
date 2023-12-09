@@ -40,7 +40,9 @@ public class PriorityHeap {
             throw new RuntimeException(e);
         }
 
-        if (n == 1) {
+        if (n == 0) {
+            throw new IllegalArgumentException("Plik jest pusty!");
+        } else if (n == 1) {
             n++;
             letters = new Node[n];
             Node fakeNode = new Node((char) 0, 0);
