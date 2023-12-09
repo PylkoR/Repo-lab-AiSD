@@ -16,6 +16,7 @@ public class Decompressor {
             currentByte = fileReader.read();
             nextByte = fileReader.read();
             int filled = (currentByte & 0b1110_0000) >> 5;
+            System.out.println(filled);
 
             root = new Node('r', 0, false);
             recreateTree(root, fileReader);
