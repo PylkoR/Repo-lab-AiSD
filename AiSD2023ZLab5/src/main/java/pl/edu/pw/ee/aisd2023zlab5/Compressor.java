@@ -3,34 +3,29 @@ package pl.edu.pw.ee.aisd2023zlab5;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.channels.FileChannel;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 public class Compressor {
     private String treeToOutputFile = "";
 
-    public void compress(String fileName, String outputFile) throws IOException {
+    public void compress(String fileName, String outputFile) {
         HuffmanTree tree = new HuffmanTree(fileName);
         String[] codes = tree.getCodes();
-        FileChannel output = FileChannel.open(Paths.get(outputFile), StandardOpenOption.WRITE);
-        FileChannel input = FileChannel.open(Paths.get(fileName), StandardOpenOption.READ);
-        output.truncate(0);
-
-        if (input.size() < 3) {
-            throw new RuntimeException("Plik jest za mały, nie nadaje się do kompresji.");
-        }
 
         try (FileInputStream fileReader = new FileInputStream(fileName)) {
             int asciiSign;
+            if (fileReader.getChannel().size() < 3) {
+                throw new RuntimeException("File is too small(below 3 bytes).");
+            }
 
             try (RandomAccessFile fileOutput = new RandomAccessFile(outputFile, "rw")) {
+                fileOutput.getChannel().truncate(0);
+
                 int toWrite = 0;
                 int filled = 3;
 
                 compressTreeToString(tree.getRoot());
-                System.out.println(treeToOutputFile);       //wypisuje skopmpresowane drzewo jako string
 
+                //Wpisywanie drzewa huffmana
                 for (int i = 0; i < treeToOutputFile.length(); i++) {
                     char currentChar = treeToOutputFile.charAt(i);
 
@@ -40,7 +35,6 @@ public class Compressor {
                         filled++;
                         if (filled == 8) {
                             fileOutput.write(toWrite);
-                            //System.out.println((int)toWrite + " 1");
                             toWrite = 0;
                             filled = 0;
                         }
@@ -57,7 +51,6 @@ public class Compressor {
 
                             if (filled == 8) {
                                 fileOutput.write(toWrite);
-                                //System.out.println((int)toWrite + " petla");
                                 toWrite = 0;
                                 filled = 0;
                             }
@@ -67,13 +60,13 @@ public class Compressor {
                         filled++;
                         if (filled == 8) {
                             fileOutput.write(toWrite);
-                            //System.out.println((int)toWrite + " 0");
                             toWrite = 0;
                             filled = 0;
                         }
                     }
                 }
 
+                //Wpisywanie zakodowanych znaków
                 while ((asciiSign = fileReader.read()) != -1) {
                     String code = codes[asciiSign];
 
@@ -88,7 +81,6 @@ public class Compressor {
 
                         if (filled == 8) {
                             fileOutput.write(toWrite);
-                            //System.out.println((int)toWrite + " tekst");
                             toWrite = 0;
                             filled = 0;
                         }
@@ -97,9 +89,8 @@ public class Compressor {
                 if (filled != 0) {
                     toWrite = toWrite << 8 - filled;
                     fileOutput.write(toWrite);
-                    //System.out.println((int)toWrite + " filled");
-                    System.out.println("filled: " + filled); //wypisuje wartość filled
 
+                    //Wpisywanie ilości bitów w ostatnim bajcie pliku jako pierwsze 3 bity skompresowanego pliku
                     fileOutput.seek(0);
                     int firstByte = fileOutput.read();
                     filled = filled << 5;

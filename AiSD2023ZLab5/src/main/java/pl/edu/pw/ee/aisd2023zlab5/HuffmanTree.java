@@ -18,7 +18,6 @@ public class HuffmanTree {
         while (heap.getLastNodeId() > 0) {
             Node firstLowest = heap.extractMin();
             Node secondLowest = heap.extractMin();
-            System.out.println(firstLowest.getLetter() + "->" + firstLowest.getQuantity() + " + " + secondLowest.getLetter() + "->" + secondLowest.getQuantity() + "=" + (firstLowest.getQuantity() + secondLowest.getQuantity()));
             Node newNode = new Node((char) 0, firstLowest.getQuantity() + secondLowest.getQuantity(), firstLowest, secondLowest);
 
             heap.insertToHeap(newNode);

@@ -16,19 +16,17 @@ public class Decompressor {
             currentByte = fileReader.read();
             nextByte = fileReader.read();
             int filled = (currentByte & 0b1110_0000) >> 5;
-            System.out.println("filled: " + filled);
 
             root = new Node('r', 0, false);
             recreateTree(root, fileReader);
 
-            HuffmanTree hufTree = new HuffmanTree(root);
-
-            String[] codes = hufTree.getCodes();
-            for (int i = 0; i < codes.length; i++) {
-                if (codes[i] != null) {
-                    System.out.println((char) i + " - " + codes[i]);
-                }
-            }
+//            HuffmanTree hufTree = new HuffmanTree(root);
+//            String[] codes = hufTree.getCodes();
+//            for (int i = 0; i < codes.length; i++) {
+//                if (codes[i] != null) {
+//                    System.out.println((char) i + " - " + codes[i]);
+//                }
+//            }
 
             //TEKST
             try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
@@ -88,7 +86,7 @@ public class Decompressor {
                 if (letterBit != 0 && letterBit != -1) {
                     letter++;
                 } else if (letterBit == -1) {
-                    throw new RuntimeException("kompresowany plik był zbyt mały!");
+                    throw new RuntimeException("Compressed file was too small!");
                 }
             }
 
@@ -110,7 +108,7 @@ public class Decompressor {
                 if (letterBit != 0 && letterBit != -1) {
                     letter++;
                 } else if (letterBit == -1) {
-                    throw new RuntimeException("kompresowany plik był zbyt mały!");
+                    throw new RuntimeException("Compressed file was too small!");
                 }
             }
 
