@@ -89,7 +89,6 @@ public class Compressor {
                 if (filled != 0) {
                     toWrite = toWrite << 8 - filled;
                     fileOutput.write(toWrite);
-                    System.out.println(filled);
 
                     //Wpisywanie ilości bitów w ostatnim bajcie pliku jako pierwsze 3 bity skompresowanego pliku
                     fileOutput.seek(0);
