@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
@@ -46,7 +47,7 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_PassIfRootIsTheSmallestKeyNode() {
+    public void should_PassIfRootIsTheSmallestKeyNode() {
         //given
         boolean isNotSmaller = true;
         Random rand = new Random();
@@ -71,7 +72,7 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_CorrectlyExtractSmallestNode() {
+    public void should_CorrectlyExtractSmallestNode() {
         //given
         Random rand = new Random();
         for (int i = 0; i < size; i++) {
@@ -89,7 +90,7 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_CorrectlyExtractAllNodes() {
+    public void should_CorrectlyExtractAllNodes() {
         //given
         boolean nextExtractedIsBiggerOrEqual = true;
         Random rand = new Random();
@@ -114,7 +115,7 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_ThrowExceptionWhenHeapIsFull() {
+    public void should_ThrowExceptionWhenHeapIsFull() {
         try {
             for (int i = 0; i <= size; i++) {
                 Node node = new Node('z', i, false);
@@ -127,7 +128,7 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_ThrowExceptionWhenHeapIsEmpty() {
+    public void should_ThrowExceptionWhenHeapIsEmpty() {
         try {
             heap.extractMin();
             fail("Exception wasn't thrown!");
@@ -137,9 +138,9 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_CreateHeapWithAllLettersFromFile() {
+    public void should_CreateHeapWithAllLettersFromFile() {
         //given
-        String filePath = "src/testFiles/test3";
+        String filePath = "src/test/java/pl/edu/pw/ee/aisd2023zlab5/testFiles/test3";
         char[] bytes = new char[256];
         int n = 0;
 
@@ -164,9 +165,18 @@ class PriorityHeapTest {
     }
 
     @Test
-    void should_MakeTwoNodesHeap_WhenFileHasOneLetter() {
+    public void should_MakeTwoNodesHeap_WhenFileHasOneLetter() {
         //given
-        String filePath = "src/testFiles/test7.txt";
+        String filePath = "src/test/java/pl/edu/pw/ee/aisd2023zlab5/testFiles/test8.txt";
+        int size = 20;
+        char exampleChar = 'b';
+        try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
+            for (int i = 0; i < size; i++) {
+                outputStream.write(exampleChar);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         //when
         PriorityHeap fileHeap = new PriorityHeap(filePath);

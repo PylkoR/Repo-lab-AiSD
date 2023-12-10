@@ -12,13 +12,14 @@ class HuffmanTreeTest {
     @Test
     public void should_CreateHufTreeWithCorrectCodes_WhenLettersHaveDifferentQuantities() {
         //given
+        String testFilePath = "src/test/java/pl/edu/pw/ee/aisd2023zlab5/testFiles/test8.txt";
         int numberOfa = 10;
         int numberOfc = 20;
         int numberOfe = 5;
         int numberOfk = 7;
         int numberOfh = 22;
 
-        try (FileOutputStream output = new FileOutputStream("src/testFiles/test8.txt")) {
+        try (FileOutputStream output = new FileOutputStream(testFilePath)) {
             for (int i = 0; i < numberOfh; i++) {
                 if (i <= numberOfk) output.write('k');
                 if (i <= numberOfe) output.write('e');
@@ -31,7 +32,7 @@ class HuffmanTreeTest {
         }
 
         //when
-        HuffmanTree tree = new HuffmanTree("src/testFiles/test8.txt");
+        HuffmanTree tree = new HuffmanTree(testFilePath);
         String[] codes = tree.getCodes();
         char mostCommonLetter = 0;
         int e = 'e';
@@ -49,8 +50,12 @@ class HuffmanTreeTest {
 
     @Test
     public void should_ThrowException_WhenFileIsEmpty() {
+        //given
+        String testFilePath = "src/test/java/pl/edu/pw/ee/aisd2023zlab5/testFiles/empty.txt";
+
+        //when
         try {
-            HuffmanTree huffmanTree = new HuffmanTree("src/testFiles/empty.txt");
+            HuffmanTree huffmanTree = new HuffmanTree(testFilePath);
             fail("Exception wasn't thrown!");
         } catch (IllegalArgumentException exception) {
             assertEquals("Plik jest pusty!", exception.getMessage());
@@ -60,8 +65,9 @@ class HuffmanTreeTest {
     @Test
     public void should_FindCorrectLetterInTreeByCode() {
         //given
+        String testFilePath = "src/test/java/pl/edu/pw/ee/aisd2023zlab5/testFiles/test8.txt";
         int size = 256;
-        try (FileOutputStream outputStream = new FileOutputStream("src/testFiles/test8.txt")) {
+        try (FileOutputStream outputStream = new FileOutputStream(testFilePath)) {
             Random rand = new Random();
             for (int i = 0; i < size; i++) {
                 char randChar = (char) rand.nextInt(128);
@@ -72,7 +78,7 @@ class HuffmanTreeTest {
         }
 
         //when
-        HuffmanTree tree = new HuffmanTree("src/testFiles/test8.txt");
+        HuffmanTree tree = new HuffmanTree(testFilePath);
         Node root = tree.getRoot();
         String[] codes = tree.getCodes();
 
@@ -93,4 +99,29 @@ class HuffmanTreeTest {
         }
     }
 
+    @Test
+    public void should_CreateThreeNodeTreeForOneLetterFile() {
+        //given
+        String testFilePath = "src/test/java/pl/edu/pw/ee/aisd2023zlab5/testFiles/test8.txt";
+        char exampleChar = 'w';
+        try (FileOutputStream outputStream = new FileOutputStream(testFilePath)) {
+            for (int i = 0; i < 4; i++) {
+                outputStream.write(exampleChar);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        //when
+        HuffmanTree tree = new HuffmanTree(testFilePath);
+        String[] codes = tree.getCodes();
+        Node root = tree.getRoot();
+        Node leftSon = root.getLeft();
+        Node rightSon = root.getRight();
+
+        //then
+        assertNotNull(codes[exampleChar]);
+        assertEquals(exampleChar, rightSon.getLetter());
+        assertEquals((char) 0, leftSon.getLetter());
+    }
 }

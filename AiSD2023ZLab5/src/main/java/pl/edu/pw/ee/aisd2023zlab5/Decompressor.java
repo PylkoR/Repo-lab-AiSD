@@ -23,14 +23,6 @@ public class Decompressor {
             root = new Node('r', 0, false);
             recreateTree(root, fileReader);
 
-//            HuffmanTree hufTree = new HuffmanTree(root);
-//            String[] codes = hufTree.getCodes();
-//            for (int i = 0; i < codes.length; i++) {
-//                if (codes[i] != null) {
-//                    System.out.println((char) i + " - " + codes[i]);
-//                }
-//            }
-
             //TEKST
             try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
                 int bit;

@@ -14,7 +14,7 @@ public class Compressor {
         try (FileInputStream fileReader = new FileInputStream(fileName)) {
             int asciiSign;
             if (fileReader.getChannel().size() < 3) {
-                throw new RuntimeException("File is too small(below 3 bytes).");
+                throw new IllegalArgumentException("File is too small(below 3 bytes).");
             }
 
             try (RandomAccessFile fileOutput = new RandomAccessFile(outputFile, "rw")) {
@@ -65,6 +65,7 @@ public class Compressor {
                         }
                     }
                 }
+                treeToOutputFile = "";
 
                 //Wpisywanie zakodowanych znaków
                 while ((asciiSign = fileReader.read()) != -1) {

@@ -12,4 +12,6 @@ DZIAŁANIE PROGRAMU
 
 UWAGI
     Program nie skompresuje plików poniżej 3 bajtów. Wynika to z błędnego działania mojego programu, gdy zapis drzewa sięga ostatniego bajtu.
-    Nie miałem czasu aby to poprawiać, więc obsługuje to wurzuceniem wyjątku.
+    Nie miałem czasu aby to poprawiać, a wydaje mi się to mało istotne, więc obsługuje to wurzuceniem wyjątku.
+
+    Klasy Compressor i Decompressor są napisane jednym ciągiem, nie jestem z tego dumny, ale brak czasu odegrał tu główną rolę.
