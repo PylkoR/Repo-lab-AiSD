@@ -1,27 +1,36 @@
 package pl.edu.pw.ee.aisd2023zlab6.lcs;
 
+import static pl.edu.pw.ee.aisd2023zlab6.lcs.Cell.Direction.NONE;
+
 public class Cell {
+    public enum Direction {
+        LEFT,
+        TOP,
+        DIAGONAL,
+        NONE
+    }
+
     int value;
-    direction direction;
-    
-    public void Cell(){
+    Direction direction;
+
+    public Cell() {
         value = 0;
-        direction = direction.NONE;
+        direction = NONE;
     }
-    
-    public void setValue(int value){
+
+    public void setValue(int value) {
         this.value = value;
-       
     }
-    
-    public void setDirection(enum direction){
+
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
-}
 
-enum direction{
-    LEFT,
-    TOP,
-    DIAGONAL,
-    NONE;
+    public int getValue() {
+        return value;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
 }
