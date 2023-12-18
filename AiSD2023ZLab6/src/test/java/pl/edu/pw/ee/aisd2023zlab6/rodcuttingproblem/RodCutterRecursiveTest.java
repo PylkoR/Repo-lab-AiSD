@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Random;
+
 public class RodCutterRecursiveTest {
 
     private RodCutter rodCutter;
@@ -107,6 +109,24 @@ public class RodCutterRecursiveTest {
 
         // then
         assertThat(maxSumOfMoney).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void timeTest() {
+        // given
+        Random rand = new Random();
+        int rodLength = 31;
+        int[] prices = new int[rodLength + 1];
+
+        for (int i = 0; i <= rodLength; i++){
+            prices[i] = i + rand.nextInt(10) + 1;
+        }
+
+        // when
+        int maxSumOfMoney = rodCutter.cutRod(prices, rodLength);
+
+        // then
+        //assertThat(maxSumOfMoney).isEqualTo(expectedResult);
     }
 
 }

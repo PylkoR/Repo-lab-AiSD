@@ -8,7 +8,7 @@ public class RodCutterTopDown extends RodCutter {
     public int cutRod(int[] prices, int rodLength) {
         validateInput(prices, rodLength);
 
-        int[] results = initResults(rodLength);
+        int[] results = initResults(rodLength + 1);
 
         return cutRodTopDown(prices, rodLength, results);
     }
@@ -26,11 +26,10 @@ public class RodCutterTopDown extends RodCutter {
     private int cutRodTopDown(int[] prices, int rodLength, int[] results) {
         int result = Integer.MIN_VALUE;
 
-        if (results[rodLength] >= 0) {
-            result = results[rodLength];
-
-        } else if (rodLength == 0) {
+        if (rodLength == 0) {
             result = 0;
+        }else if (results[rodLength] >= 0) {
+            result = results[rodLength];
 
         } else {
             for (int i = 1; i <= rodLength; i++) {
@@ -38,7 +37,7 @@ public class RodCutterTopDown extends RodCutter {
             }
         }
 
-        results[rodLength - 1] = result;
+        results[rodLength] = result;
 
         return result;
     }

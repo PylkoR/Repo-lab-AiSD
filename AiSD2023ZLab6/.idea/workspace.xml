@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0eab6589-dcc1-4df1-91b1-e8703ed4b487" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterWithSolutionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterTopDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterTopDown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterWithSolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterWithSolution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterRecursiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterRecursiveTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/edu/pw/ee/aisd2023zlab6/rodcuttingproblem/RodCutterTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2ZUGnuQgrIcIo9hSV3kMTyCNwdI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rafal/repoAiDS/2023Z_AISD_git_GR2_gr21/AiSD2023ZLab6&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="pl.edu.pw.ee.aisd2023zlab6.lcs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RodCutterTopDownTest.timeTest">
+    <configuration name="RodCutterBottomUpTest.timeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AiSD2023ZLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.RodCutterBottomUpTest" />
+      <option name="METHOD_NAME" value="timeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RodCutterRecursiveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AiSD2023ZLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.RodCutterRecursiveTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RodCutterRecursiveTest.timeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AiSD2023ZLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.RodCutterRecursiveTest" />
+      <option name="METHOD_NAME" value="timeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RodCutterTopDownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AiSD2023ZLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.RodCutterTopDownTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RodCutterTopDownTest.timeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AiSD2023ZLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.pw.ee.aisd2023zlab6.rodcuttingproblem.RodCutterTopDownTest" />
+      <option name="METHOD_NAME" value="timeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RodCutterTopDownTest.timeTest" />
+        <item itemvalue="JUnit.RodCutterTopDownTest.timeTest" />
+        <item itemvalue="JUnit.RodCutterTopDownTest.timeTest" />
+        <item itemvalue="JUnit.RodCutterTopDownTest.timeTest" />
+        <item itemvalue="JUnit.RodCutterTopDownTest.timeTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0eab6589-dcc1-4df1-91b1-e8703ed4b487" name="Changes" comment="" />
+      <created>1702469416159</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702469416159</updated>
+    </task>
+    <servers />
+  </component>
+</project>
