@@ -5,17 +5,15 @@ import java.util.Deque;
 import pl.edu.pw.ee.aisd2023zlab7.data.input.Graph;
 import pl.edu.pw.ee.aisd2023zlab7.data.outcome.GraphBfsResult;
 import pl.edu.pw.ee.aisd2023zlab7.graphsearch.services.GraphSearch;
+import pl.edu.pw.ee.aisd2023zlab7.graphsearch.services.Color;
+
+import static pl.edu.pw.ee.aisd2023zlab7.graphsearch.services.Color.*;
 
 public class BreadthFirstSeaerch implements GraphSearch {
-
-    private static final int WHITE = 0;
-    private static final int GRAY = 1;
-    private static final int BLACK = 2;
-
     private final int initVal = -1;
 
     private Deque<Integer> queue;
-    private int[] color;
+    private Color[] color;
     private int[] prev;
     private int[] dist;
 
@@ -45,7 +43,7 @@ public class BreadthFirstSeaerch implements GraphSearch {
     private void initColors() {
         int nVertices = graph.getNumOfVertices();
 
-        color = new int[nVertices];
+        color = new Color[nVertices];
 
         for (int i = 0; i < nVertices; i++) {
             color[i] = WHITE;

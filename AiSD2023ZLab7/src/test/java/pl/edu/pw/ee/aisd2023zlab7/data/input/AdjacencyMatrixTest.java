@@ -1,6 +1,5 @@
 package pl.edu.pw.ee.aisd2023zlab7.data.input;
 
-import java.util.Arrays;
 import static java.util.Arrays.stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
