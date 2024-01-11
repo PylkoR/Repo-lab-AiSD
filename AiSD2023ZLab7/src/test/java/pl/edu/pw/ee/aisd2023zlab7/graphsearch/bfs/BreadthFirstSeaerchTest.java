@@ -33,4 +33,28 @@ public class BreadthFirstSeaerchTest {
         assertThat(result.getPrevVertices()).containsExactly(new int[]{-1, 0, 1, 4, 0, 4, 2, -1, -1});
     }
 
+    @Test
+    public void should_TellCorrectlyIfThereIsLinkageBetweenTwoVertices(){
+        // given
+        Graph graph = new AdjacencyMatrix(PATH_GRAPH_9_9);
+        int firstVerticeId = 2;
+        int secondVerticeId = 3;
+
+        // when
+        boolean exist = isLinkageBetween(graph, firstVerticeId, secondVerticeId);
+
+        // then
+        assertThat(exist).isTrue();
+    }
+
+    public boolean isLinkageBetween(Graph graph, int firstVerticeId, int secondVerticeId){
+        BreadthFirstSeaerch graphSearch = new BreadthFirstSeaerch();
+        GraphBfsResult result = graphSearch.searchGraphPaths(graph, firstVerticeId);
+
+        if (result.getDistance()[secondVerticeId] != MAX_VALUE){
+            return true;
+        }
+        else return false;
+    }
+
 }
