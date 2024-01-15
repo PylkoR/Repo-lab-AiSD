@@ -25,7 +25,7 @@ public class AdjacencyMatrixTest {
 
         // when
         Throwable exceptionCaught = catchThrowable(() -> {
-            graph = new AdjacencyMatrix(pathToFile);
+            graph = new GraphUtils().readMatrix(pathToFile);
         });
 
         // then
@@ -41,7 +41,7 @@ public class AdjacencyMatrixTest {
 
         // when
         Throwable exceptionCaught = catchThrowable(() -> {
-            graph = new AdjacencyMatrix(pathToFile);
+            graph = new GraphUtils().readMatrix(pathToFile);
         });
 
         // then
@@ -57,7 +57,7 @@ public class AdjacencyMatrixTest {
 
         // when
         Throwable exceptionCaught = catchThrowable(() -> {
-            graph = new AdjacencyMatrix(pathToFile);
+            graph = new GraphUtils().readMatrix(pathToFile);
         });
 
         // then
@@ -74,7 +74,7 @@ public class AdjacencyMatrixTest {
 
         // when
         Throwable exceptionCaught = catchThrowable(() -> {
-            graph = new AdjacencyMatrix(pathToFile);
+            graph = new GraphUtils().readMatrix(pathToFile);
         });
 
         // then
@@ -86,7 +86,7 @@ public class AdjacencyMatrixTest {
     @Test
     public void should_ThrowException_When_GettingNeighboursOfNotExistedVertice() {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_2_2);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_2_2);
 
         // when
         int verticeIdGreaterThanRows = 3;
@@ -104,7 +104,7 @@ public class AdjacencyMatrixTest {
     @Test
     public void should_ReturnNumOfVertices_When_AllVerticesAreConnected() {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_3_3);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_3_3);
 
         // when
         int numOfVertices = graph.getNumOfVertices();
@@ -118,7 +118,7 @@ public class AdjacencyMatrixTest {
     @Test
     public void should_ReturnNumOfVertices_When_NotAllVerticesAreConnected() {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_5_5);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_5_5);
 
         // when
         int numOfVertices = graph.getNumOfVertices();
@@ -132,7 +132,7 @@ public class AdjacencyMatrixTest {
     @Test
     public void should_ReturnNumOfEdges_When_AllVerticesAreConnected() {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_3_3);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_3_3);
 
         // when
         int numOfEdges = graph.getNumOfEdges();
@@ -146,7 +146,7 @@ public class AdjacencyMatrixTest {
     @Test
     public void should_ReturnNumOfEdges_When_NotAllVerticesAreConnected() {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_5_5);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_5_5);
 
         // when
         int numOfEdges = graph.getNumOfEdges();
@@ -171,7 +171,7 @@ public class AdjacencyMatrixTest {
     })
     public void should_ReturnNeighbours_When_NotAllNeighboursAreConnected(int verticeId, String expectedNeighboursAsStr) {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_9_9);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_9_9);
 
         // when
         int[] neighbours = graph.getNeighbours(verticeId);
@@ -185,7 +185,7 @@ public class AdjacencyMatrixTest {
     @Test
     public void should_ReturnAllVertices_When_GraphIsCorrect() {
         // given
-        graph = new AdjacencyMatrix(PATH_GRAPH_9_9);
+        graph = new GraphUtils().readMatrix(PATH_GRAPH_9_9);
 
         // when
         int[] vertices = graph.getVertices();

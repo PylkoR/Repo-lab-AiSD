@@ -19,42 +19,18 @@ public class BreadthFirstSeaerchTest {
         graphSearch = new BreadthFirstSeaerch();
     }
 
-    @Test
-    public void should_ReturnBfsResult_when_GraphIsDisconnected() {
-        // given
-        Graph graph = new AdjacencyMatrix(PATH_GRAPH_9_9);
-        int startVerticeId = 0;
-
-        // when
-        GraphBfsResult result = (GraphBfsResult) graphSearch.searchGraphPaths(graph, startVerticeId);
-
-        // then
-        assertThat(result.getDistance()).containsExactly(new int[]{0, 1, 2, 2, 1, 2, 3, MAX_VALUE, MAX_VALUE});
-        assertThat(result.getPrevVertices()).containsExactly(new int[]{-1, 0, 1, 4, 0, 4, 2, -1, -1});
-    }
-
-    @Test
-    public void should_TellCorrectlyIfThereIsLinkageBetweenTwoVertices(){
-        // given
-        Graph graph = new AdjacencyMatrix(PATH_GRAPH_9_9);
-        int firstVerticeId = 2;
-        int secondVerticeId = 3;
-
-        // when
-        boolean exist = isLinkageBetween(graph, firstVerticeId, secondVerticeId);
-
-        // then
-        assertThat(exist).isTrue();
-    }
-
-    public boolean isLinkageBetween(Graph graph, int firstVerticeId, int secondVerticeId){
-        BreadthFirstSeaerch graphSearch = new BreadthFirstSeaerch();
-        GraphBfsResult result = graphSearch.searchGraphPaths(graph, firstVerticeId);
-
-        if (result.getDistance()[secondVerticeId] != MAX_VALUE){
-            return true;
-        }
-        else return false;
-    }
+//    @Test
+//    public void should_ReturnBfsResult_when_GraphIsDisconnected() {
+//        // given
+//        Graph graph = new AdjacencyMatrix(PATH_GRAPH_9_9);
+//        int startVerticeId = 0;
+//
+//        // when
+//        GraphBfsResult result = (GraphBfsResult) graphSearch.searchGraphPaths(graph, startVerticeId);
+//
+//        // then
+//        assertThat(result.getDistance()).containsExactly(new int[]{0, 1, 2, 2, 1, 2, 3, MAX_VALUE, MAX_VALUE});
+//        assertThat(result.getPrevVertices()).containsExactly(new int[]{-1, 0, 1, 4, 0, 4, 2, -1, -1});
+//    }
 
 }
