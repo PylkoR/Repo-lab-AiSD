@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Romeo decompression" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="pl.edu.pw.ee.aisd2023zlab5.Main" />
+    <module name="AiSD2023ZLab5" />
+    <option name="PROGRAM_PARAMETERS" value="C:\Users\rafal\IdeaProjects\Repo-lab-AiSD\AiSD2023ZLab5\src\test\java\pl\edu\pw\ee\aisd2023zlab5\CompressedFiles\Romeo.huf C:\Users\rafal\IdeaProjects\Repo-lab-AiSD\AiSD2023ZLab5\src\test\java\pl\edu\pw\ee\aisd2023zlab5\DecompressedFiles" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

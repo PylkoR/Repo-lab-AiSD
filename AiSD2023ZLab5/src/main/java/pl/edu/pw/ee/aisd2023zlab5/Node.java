@@ -1,11 +1,11 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
-public class Node {
-    private char letter;
-    private int quantity;
+public class Node implements Comparable<Node> {
+    private final char letter;
+    private final int quantity;
     private Node left;
     private Node right;
-    private boolean isLeaf;
+    private final boolean isLeaf;
 
     public Node(char letter, int quantity) {
         this.letter = letter;
@@ -56,4 +56,8 @@ public class Node {
         this.right = right;
     }
 
+    @Override
+    public int compareTo(Node othernode) {
+        return Integer.compare(this.quantity, othernode.getQuantity());
+    }
 }

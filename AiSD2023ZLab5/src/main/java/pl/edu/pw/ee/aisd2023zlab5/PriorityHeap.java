@@ -63,22 +63,22 @@ public class PriorityHeap {
         int parentId = 0;
         int leftChildId = 1;
         int rightChildId = 2;
-        int lowestQuantity = parentId;
+        int lowestQuantityId = parentId;
 
         while (true) {
-            if (leftChildId <= lastId && letters[leftChildId].getQuantity() < letters[lowestQuantity].getQuantity()) {
-                lowestQuantity = leftChildId;
+            if (leftChildId <= lastId && letters[leftChildId].compareTo(letters[lowestQuantityId]) < 0) {
+                lowestQuantityId = leftChildId;
             }
 
-            if (rightChildId <= lastId && letters[rightChildId].getQuantity() < letters[lowestQuantity].getQuantity()) {
-                lowestQuantity = rightChildId;
+            if (rightChildId <= lastId && letters[rightChildId].compareTo(letters[lowestQuantityId]) < 0) {
+                lowestQuantityId = rightChildId;
             }
 
-            if (lowestQuantity != parentId) {
-                swap(parentId, lowestQuantity);
+            if (lowestQuantityId != parentId) {
+                swap(parentId, lowestQuantityId);
             } else break;
 
-            parentId = lowestQuantity;
+            parentId = lowestQuantityId;
             leftChildId = 2 * parentId + 1;
             rightChildId = 2 * parentId + 2;
         }
@@ -93,7 +93,7 @@ public class PriorityHeap {
             parent = i / 2;
         }
 
-        while ((i >= 1) && letters[parent].getQuantity() > letters[i].getQuantity()) {
+        while ((i >= 1) && letters[parent].compareTo(letters[i]) > 0) {
             swap(parent, i);
             i = parent;
             if (i % 2 == 0) {
