@@ -1,62 +1,23 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
-public class PriorityHeap {
-    private Node[] letters;
+public class PriorityHeap<T extends Comparable<T>> {
+    private final T[] letters;
     private int lastId = -1;
 
     public PriorityHeap(int size) {
-        this.letters = new Node[size];
+        this.letters = createTable(size);
     }
 
-    public PriorityHeap(String fileName) {
-        createHeap(fileName);
+    private T[] createTable(int size) {
+        return (T[]) new Comparable[size];
     }
 
-    public Node[] getArray() {
+    private T[] getArray() {
         return letters;
     }
 
     public int getLastNodeId() {
         return lastId;
-    }
-
-    private void createHeap(String fileName) {
-        int[] ascii = new int[256];
-        int n = 0;
-
-        try (FileInputStream fileReader = new FileInputStream(fileName)) {
-            int asciiSign;
-
-            while ((asciiSign = fileReader.read()) != -1) {
-                if (ascii[asciiSign]++ == 0) {
-                    n++;
-                }
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        if (n == 0) {
-            throw new IllegalArgumentException("Plik jest pusty!");
-        } else if (n == 1) {
-            n++;
-            letters = new Node[n];
-            Node fakeNode = new Node((char) 0, 0);
-            insertToHeap(fakeNode);
-        } else {
-            letters = new Node[n];
-        }
-
-        for (int i = 0; i < 256; i++) {
-            if (ascii[i] != 0) {
-                Node node = new Node((char) i, ascii[i]);
-                insertToHeap(node);
-            }
-        }
     }
 
     private void heapDown() {
@@ -108,17 +69,17 @@ public class PriorityHeap {
     private void swap(int firstId, int secondId) {
         if (firstId != secondId) {
 
-            Node firstNode = letters[firstId];
+            T firstNode = letters[firstId];
             letters[firstId] = letters[secondId];
             letters[secondId] = firstNode;
         }
     }
 
-    public Node extractMin() {
+    public T extractMin() {
         if (lastId < 0) {
             throw new RuntimeException("Kopiec jest już pusty!");
         }
-        Node min = letters[0];
+        T min = letters[0];
         letters[0] = letters[lastId];
         lastId--;
         heapDown();
@@ -126,7 +87,7 @@ public class PriorityHeap {
         return min;
     }
 
-    public void insertToHeap(Node newNode) {
+    public void insertToHeap(T newNode) {
         lastId++;
         if (lastId >= letters.length) {
             throw new RuntimeException("Kopiec jest już pełny!");

@@ -1,5 +1,8 @@
 package pl.edu.pw.ee.aisd2023zlab5;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class HuffmanTree {
     private Node root;
     private final String[] codes = new String[256];
@@ -12,22 +15,63 @@ public class HuffmanTree {
         traverseTree(root, "", "");
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
     private void createHuffmanTree(String fileName) {
-        PriorityHeap heap = new PriorityHeap(fileName);
-        while (heap.getLastNodeId() > 0) {
-            Node firstLowest = heap.extractMin();
-            Node secondLowest = heap.extractMin();
+        PriorityHeap<Node> lettersHeap = fulfillHeap(fileName);
+
+        while (lettersHeap.getLastNodeId() > 0) {
+            Node firstLowest = lettersHeap.extractMin();
+            Node secondLowest = lettersHeap.extractMin();
             Node newNode = new Node((char) 0, firstLowest.getQuantity() + secondLowest.getQuantity(), firstLowest, secondLowest);
 
-            heap.insertToHeap(newNode);
+            lettersHeap.insertToHeap(newNode);
         }
 
-        root = heap.getArray()[0];
+        root = lettersHeap.extractMin();
         traverseTree(root, "", "");
     }
 
-    public Node getRoot() {
-        return root;
+    private PriorityHeap<Node> fulfillHeap(String fileName) {
+        int[] ascii = new int[256];
+        int n = 0;
+
+        try (FileInputStream fileReader = new FileInputStream(fileName)) {
+            int asciiSign;
+
+            while ((asciiSign = fileReader.read()) != -1) {
+                if (ascii[asciiSign]++ == 0) {
+                    n++;
+                }
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        PriorityHeap<Node> lettersHeap;
+
+        if (n == 0) {
+            throw new IllegalArgumentException("Plik jest pusty!");
+        } else if (n == 1) {
+            n++;
+            lettersHeap = new PriorityHeap<>(n);
+            Node fakeNode = new Node((char) 0, 0);
+            lettersHeap.insertToHeap(fakeNode);
+        } else {
+            lettersHeap = new PriorityHeap<>(n);
+        }
+
+        for (int i = 0; i < 256; i++) {
+            if (ascii[i] != 0) {
+                Node node = new Node((char) i, ascii[i]);
+                lettersHeap.insertToHeap(node);
+            }
+        }
+
+        return lettersHeap;
     }
 
     private void traverseTree(Node node, String code, String param) {
